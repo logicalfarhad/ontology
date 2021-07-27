@@ -870,7 +870,8 @@ rami:Function rdf:type owl:NamedIndividual ,
               rdfs:comment """Makes statements on the function pursuant to IEC 81346 and on the function of the asset components.
 Includes skills such as interpretation (?), commissioning, calculation (?) or diagnosis functions of the asset.
 Examples: current imbalance detection ability"""@en ;
-              rdfs:label "Function"@en .
+              rdfs:label "Function"@en ;
+              rdfs:label "Operation"@en .
 
 
 ###  https://w3id.org/i40/rami#Functional
