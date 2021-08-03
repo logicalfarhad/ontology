@@ -1,5 +1,4 @@
 cp -u /home/sali/Downloads/mappingdemo/mappingFolder/master/privateRepo/* /home/sali/Downloads/mappingdemo/repoFolder/privateRepo/main
-
 <http://example.com/2008-09-05> <http://www.europeana.eu/schemas/edm/country> "'US'".
 <http://example.com/2008-09-05> <http://ns.nature.com/terms/id> "1".
 <http://example.com/2008-09-05> <http://purl.org/ontology/wo/name> "'Ruggiero-Delane'".
