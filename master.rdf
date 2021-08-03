@@ -1,4 +1,4 @@
-If you want to build and run locally, ensure that at least Java 11 is installed. Then, follow these steps:
+<http://example.com/2008-09-05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>.
 <http://example.com/2008-09-05> <http://www.europeana.eu/schemas/edm/country> "'US'".
 <http://example.com/2008-09-05> <http://ns.nature.com/terms/id> "1".
 <http://example.com/2008-09-05> <http://purl.org/ontology/wo/name> "'Ruggiero-Delane'".
