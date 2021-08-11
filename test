@@ -1,5 +1,0 @@
-curl -X PUT \
-     -H Content-Type:text/turtle \
-     -T master.n3 \
-     -G http://localhost:3030/dataset \
-     --data-urlencode graph=farhadonto/main
