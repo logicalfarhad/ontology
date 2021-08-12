@@ -1,0 +1,3920 @@
+@prefix : <http://iais.fraunhofer.de/vocabs/miele#> .
+@prefix zf: <http://iais.fraunhofer.de/miele/> .
+@prefix doc: <http://192.102.146.32:3000/widoco/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix miele: <http://iais.fraunhofer.de/vocabs/miele/dataDictionary#> .
+@base <http://iais.fraunhofer.de/vocabs/miele#> .
+
+<http://iais.fraunhofer.de/vocabs/miele#> rdf:type owl:Ontology ;
+                                        rdfs:comment "Information Model describing the concepts of the ZF assembly line." .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://iais.fraunhofer.de/vocabs/miele#documentedAt
+:documentedAt rdf:type owl:AnnotationProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#exampleValue
+miele:exampleValue rdf:type owl:AnnotationProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#hasDictionarySource
+miele:hasDictionarySource rdf:type owl:AnnotationProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#hasSemantics
+miele:hasSemantics rdf:type owl:AnnotationProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#keyword
+miele:keyword rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://iais.fraunhofer.de/vocabs/miele#Has
+:Has rdf:type owl:ObjectProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasCountry
+:hasCountry rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :Has ;
+            rdfs:domain :MWI ;
+            rdfs:range :Country .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasEngine
+:hasEngine rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :Has ;
+           rdfs:domain :Vehicle ,
+                       :VehicleDescription ;
+           rdfs:range :Engine .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasManufacturingID
+:hasManufacturingID rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :Has ;
+                    rdfs:domain :Product ;
+                    rdfs:range :Manufacturing_Unit_ID ;
+                    rdfs:label "Has Manufacturing ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasModel
+:hasModel rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :Has ;
+          rdfs:domain :Vehicle ,
+                      :VehicleDescription ;
+          rdfs:range :Model .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasPlant
+:hasPlant rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :Has ;
+          rdfs:domain :VehicleIdentification ;
+          rdfs:range :Plant .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasRegion
+:hasRegion rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :Has ;
+           rdfs:domain :MWI ;
+           rdfs:range :Region .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasReportedIssues
+:hasReportedIssues rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :Has ;
+                   rdfs:domain :Vehicle ;
+                   rdfs:range :Issues .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasStatus
+:hasStatus rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :Has ;
+           rdfs:domain :Product ;
+           rdfs:range :ProductStatus ;
+           rdfs:label "Has Status"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasTransmission
+:hasTransmission rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :Has ;
+                 rdfs:domain :Vehicle ;
+                 rdfs:range :Transmission .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#hasVIN
+:hasVIN rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :Has ;
+        rdfs:domain :Vehicle ;
+        rdfs:range :VIN .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#isDefinedBy
+:isDefinedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain owl:Thing ;
+             rdfs:range miele:Column ;
+             rdfs:comment "Specifies which Data Dictionary item defines this entity."^^xsd:string ;
+             rdfs:label "Is Defined By"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partOf
+:partOf rdf:type owl:ObjectProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partOfAssemblyGroup
+:partOfAssemblyGroup rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :partOf ;
+                     rdfs:domain :Part ;
+                     rdfs:range :AssemblyGroup ;
+                     rdfs:label "Part of Assembly Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partOfAssemblyLine
+:partOfAssemblyLine rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :partOf ;
+                    rdfs:domain :Assembly ;
+                    rdfs:range :Assembly_Line ;
+                    rdfs:label "Part of Assembly Line"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partOfGroup
+:partOfGroup rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :partOf ;
+             rdfs:domain :Machine ;
+             rdfs:range :Manufacturing_Group ;
+             rdfs:label "Part of Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partOfVIN
+:partOfVIN rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :partOf ;
+           rdfs:domain :MWI ,
+                       :VehicleDescription ,
+                       :VehicleIdentification ;
+           rdfs:range :VIN .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#produces
+:produces rdf:type owl:ObjectProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#producesAssemblyGroup
+:producesAssemblyGroup rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :produces ;
+                       rdfs:domain :Pre-assembly ;
+                       rdfs:range :AssemblyGroup ;
+                       rdfs:label "Produces Assembly Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#producesPart
+:producesPart rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :produces ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :Machine
+                                          :Machine_Group
+                                          :Machining_Line
+                                        )
+                          ] ;
+              rdfs:range :Part ;
+              rdfs:label "Produces Part"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#producesProduct
+:producesProduct rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :produces ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Assembly
+                                             :Workspace
+                                           )
+                             ] ;
+                 rdfs:range :Product ;
+                 rdfs:label "Produces Product"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#producesRawPart
+:producesRawPart rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :produces ;
+                 rdfs:domain :External_Supplier ;
+                 rdfs:range :Raw ;
+                 rdfs:label "Produces Raw Part"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#producesSemi
+:producesSemi rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :produces ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :External_Supplier
+                                          :Machine
+                                        )
+                          ] ;
+              rdfs:range :Semi ;
+              rdfs:label "Produces Semi Part"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#producesVehicle
+:producesVehicle rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :produces ;
+                 rdfs:domain :Manufacture ;
+                 rdfs:range :Vehicle .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#reportesIssue
+:reportesIssue rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :reports ;
+               rdfs:domain :Customer ;
+               rdfs:range :Issues .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#reports
+:reports rdf:type owl:ObjectProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#uses
+:uses rdf:type owl:ObjectProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesAssemblyGroup
+:usesAssemblyGroup rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :uses ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Assembly
+                                               :Workspace
+                                             )
+                               ] ;
+                   rdfs:range :AssemblyGroup ;
+                   rdfs:label "Uses Assembly Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesFinishedPart
+:usesFinishedPart rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :uses ;
+                  rdfs:domain :Assembly ;
+                  rdfs:range :Finished ;
+                  rdfs:label "Uses Finished Part"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesGroup
+:usesGroup rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :uses ;
+           rdfs:domain :Assembly_Line ;
+           rdfs:range :Manufacturing_Group ;
+           rdfs:label "Uses Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesPart
+:usesPart rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :uses ;
+          rdfs:domain :Workspace ;
+          rdfs:range :Part ;
+          rdfs:label "Uses Part"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesProduct
+:usesProduct rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :uses ;
+             rdfs:domain :Re-assembly ;
+             rdfs:range :Product ;
+             rdfs:label "Uses Product"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesRawMaterial
+:usesRawMaterial rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :uses ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :External_Supplier
+                                             :Machine
+                                           )
+                             ] ;
+                 rdfs:range :Raw ;
+                 rdfs:label "Uses Raw Material"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesTool
+:usesTool rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :uses ;
+          rdfs:domain :Machine ;
+          rdfs:range :ToolFixtureGage ;
+          rdfs:label "Uses Tool"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#usesWorkspace
+:usesWorkspace rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :uses ;
+               rdf:type owl:SymmetricProperty ;
+               rdfs:domain :Assembly_Line ;
+               rdfs:range :Workspace ;
+               rdfs:label "Uses Workspace"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#validates
+:validates rdf:type owl:ObjectProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#validatesProduct
+:validatesProduct rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :validates ;
+                  rdfs:domain :EOL_Testing ;
+                  rdfs:range :Product ;
+                  rdfs:label "Validates Product"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#contactPerson
+miele:contactPerson rdf:type owl:ObjectProperty ;
+                   rdfs:domain miele:Column ;
+                   rdfs:range miele:Person ;
+                   rdfs:label "Contact Person"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#hasColumn
+miele:hasColumn rdf:type owl:ObjectProperty ;
+               rdfs:domain miele:Database ;
+               rdfs:range miele:Column ;
+               rdfs:label "Has Column"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#usedInAnalytics
+miele:usedInAnalytics rdf:type owl:ObjectProperty ;
+                     rdfs:domain miele:Column ;
+                     rdfs:range miele:Analytic ;
+                     rdfs:label "Used In Analytics"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyDate
+:assemblyDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :assemblyLineDate ;
+              rdfs:domain :Assembly ;
+              rdfs:range xsd:dateTime ;
+              rdfs:label "Assembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyDesc
+:assemblyDesc rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :description ;
+              rdfs:domain :Assembly ;
+              rdfs:range xsd:string ;
+              rdfs:label "Assembly Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupAssemblyDate
+:assemblyGroupAssemblyDate rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :assemblyGroupDate ;
+                           rdfs:domain :AssemblyGroup ;
+                           rdfs:range xsd:dateTime ;
+                           rdfs:label "Assembly Group Assembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupCreationDate
+:assemblyGroupCreationDate rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :assemblyGroupDate ;
+                           rdfs:domain :AssemblyGroup ;
+                           rdfs:range xsd:dateTime ;
+                           rdfs:label "Assembly Group Creation Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupDate
+:assemblyGroupDate rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :date .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupDesc
+:assemblyGroupDesc rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :description ;
+                   rdfs:domain :AssemblyGroup ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Assembly Group Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupDisassemblyDate
+:assemblyGroupDisassemblyDate rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :assemblyGroupDate ;
+                              rdfs:domain :AssemblyGroup ;
+                              rdfs:range xsd:dateTime ;
+                              rdfs:label "Assembly Group Disassembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupID
+:assemblyGroupID rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :id ;
+                 rdfs:domain :AssemblyGroup ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Assembly Group ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyGroupName
+:assemblyGroupName rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :name ;
+                   rdfs:domain :AssemblyGroup ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Assembly Group Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyID
+:assemblyID rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :id ;
+            rdfs:domain :Assembly ;
+            rdfs:range xsd:string ;
+            rdfs:label "Assembly ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyLineDate
+:assemblyLineDate rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :date .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyLineDesc
+:assemblyLineDesc rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :description ;
+                  rdfs:domain :Assembly_Line ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Assembly Line Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyLineID
+:assemblyLineID rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :id ;
+                rdfs:domain :Assembly_Line ;
+                rdfs:range xsd:string ;
+                rdfs:label "Assembly Line ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyLineName
+:assemblyLineName rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :name ;
+                  rdfs:domain :Assembly_Line ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Assembly Line Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#assemblyName
+:assemblyName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :name ;
+              rdfs:domain :Assembly ;
+              rdfs:range xsd:string ;
+              rdfs:label "Assembly Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#avoNr
+:avoNr rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf :status ;
+       rdfs:domain :Machine ;
+       rdfs:range xsd:int ;
+       rdfs:comment "Position in the routing on which the machine was used that prouced a disassembled part from an internal reject transmission."^^xsd:string ;
+       rdfs:label "AVO Number"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#buildDate
+:buildDate rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :date ;
+           rdfs:domain :Vehicle ;
+           rdfs:range xsd:dateTime .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#checkDigit
+:checkDigit rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :code ;
+            rdfs:domain :VIN ;
+            rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#code
+:code rdf:type owl:DatatypeProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#companyCode
+:companyCode rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :code ;
+             rdfs:domain :Customer ;
+             rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#customerNumber
+:customerNumber rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :id ;
+                rdfs:domain :Customer ;
+                rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#dataCreationDate
+:dataCreationDate rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :internalDataManagementDate ;
+                  rdfs:domain owl:Thing ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:label "Data Creation Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#dataUpdateDate
+:dataUpdateDate rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :internalDataManagementDate ;
+                rdfs:domain owl:Thing ;
+                rdfs:range xsd:dateTime ;
+                rdfs:label "Data Update Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#date
+:date rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#dictionaryProp
+:dictionaryProp rdf:type owl:DatatypeProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#disassemblyDate
+:disassemblyDate rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :assemblyLineDate ;
+                 rdfs:domain :Assembly ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:label "Disassembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#engineInformation
+:engineInformation rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :description ;
+                   rdfs:domain :Engine ;
+                   rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#engineName
+:engineName rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :name ;
+            rdfs:domain :Engine ;
+            rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#externalSupplierDesc
+:externalSupplierDesc rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :description ;
+                      rdfs:domain :External_Supplier ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "External Supplier Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#externalSupplierID
+:externalSupplierID rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :id ;
+                    rdfs:domain :External_Supplier ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "External Supplier ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#externalSupplierName
+:externalSupplierName rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :name ;
+                      rdfs:domain :External_Supplier ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "External Supplier Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#gearState
+:gearState rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :status ;
+           rdfs:domain :ToolFixtureGage ;
+           rdfs:range xsd:integer ;
+           rdfs:label "Gear State"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#internalDataManagementDate
+:internalDataManagementDate rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :date .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#isDisassembledPart
+:isDisassembledPart rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :status ;
+                    rdfs:domain :Part ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "Is a Disassembled Part"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#isFirstManufacturingMachine
+:isFirstManufacturingMachine rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :status ;
+                             rdfs:domain :Work_Center ;
+                             rdfs:range xsd:boolean ;
+                             rdfs:label "Is the First Manufacturing Machine"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#isFirstScanningMachine
+:isFirstScanningMachine rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :status ;
+                        rdfs:domain :Work_Center ;
+                        rdfs:range xsd:boolean ;
+                        rdfs:label "Is the First Scanning Machine"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#isVirtualSupplier
+:isVirtualSupplier rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :status ;
+                   rdfs:domain :Work_Center ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:label "Is Virtual Supplier"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#licensePlateNumber
+:licensePlateNumber rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :id ;
+                    rdfs:domain :Vehicle ;
+                    rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#machineDesc
+:machineDesc rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :description ;
+             rdfs:domain :Machine ;
+             rdfs:range xsd:string ;
+             rdfs:label "Machine Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#machineID
+:machineID rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :id ;
+           rdfs:domain :Machine ;
+           rdfs:range xsd:string ;
+           rdfs:label "Machine ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#machineName
+:machineName rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :name ;
+             rdfs:domain :Machine ;
+             rdfs:range xsd:string ;
+             rdfs:label "Machine Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#manufactureDate
+:manufactureDate rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :date ;
+                 rdfs:domain :Vehicle ;
+                 rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#manufacturingUnitDesc
+:manufacturingUnitDesc rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :description ;
+                       rdfs:domain :Manufacturing_Source ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "Manufacturing Unit Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#manufacturingUnitName
+:manufacturingUnitName rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :name ;
+                       rdfs:domain :Manufacturing_Source ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "Manufacturing Unit Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialAssemblyDate
+:materialAssemblyDate rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :materialDate ;
+                      rdfs:domain :Material ;
+                      rdfs:range xsd:dateTime ;
+                      rdfs:label "Material Assembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialCreationDate
+:materialCreationDate rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :materialDate ;
+                      rdfs:domain :Material ;
+                      rdfs:range xsd:dateTime ;
+                      rdfs:label "Material Creation Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialDate
+:materialDate rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :date .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialDesc
+:materialDesc rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :description ;
+              rdfs:domain :Material ;
+              rdfs:range xsd:string ;
+              rdfs:label "Material Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialDisassemblyDate
+:materialDisassemblyDate rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :materialDate ;
+                         rdfs:domain :Material ;
+                         rdfs:range xsd:dateTime ;
+                         rdfs:label "Material Disassembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialName
+:materialName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :name ;
+              rdfs:domain :Material ;
+              rdfs:range xsd:string ;
+              rdfs:label "Material Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#materialNr
+:materialNr rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :id ;
+            rdfs:domain :Material ;
+            rdfs:range xsd:string ;
+            rdfs:label "Material Number"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#modelCode
+:modelCode rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :code ;
+           rdfs:domain :Model ;
+           rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#modelDescription
+:modelDescription rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :description ;
+                  rdfs:domain :Model ;
+                  rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#modelDetails
+:modelDetails rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :description ;
+              rdfs:domain :Model ;
+              rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#modelName
+:modelName rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :name ;
+           rdfs:domain :Model ;
+           rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#modelSeries
+:modelSeries rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :id ;
+             rdfs:domain :Model ;
+             rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partBuildStatus
+:partBuildStatus rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :status ;
+                 rdfs:domain :Part ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Part Build Status"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#partName
+:partName rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :name ;
+          rdfs:domain :Part ;
+          rdfs:range xsd:string ;
+          rdfs:label "Part Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productAssemblyDate
+:productAssemblyDate rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :productDate ;
+                     rdfs:domain :Product ;
+                     rdfs:range xsd:dateTime ;
+                     rdfs:label "Product Assembly Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productCreationDate
+:productCreationDate rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :productDate ;
+                     rdfs:domain :Product ;
+                     rdfs:range xsd:dateTime ;
+                     rdfs:label "Product Creation Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productDate
+:productDate rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :date .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productDesc
+:productDesc rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :description ;
+             rdfs:domain :Product ;
+             rdfs:range xsd:string ;
+             rdfs:label "Product Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productID
+:productID rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :id ;
+           rdfs:domain :Product ;
+           rdfs:range xsd:string ;
+           rdfs:label "Product ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productName
+:productName rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :name ;
+             rdfs:domain :Product ;
+             rdfs:range xsd:string ;
+             rdfs:label "Product Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#productTestingDate
+:productTestingDate rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :productDate ;
+                    rdfs:domain :Product ;
+                    rdfs:range xsd:dateTime ;
+                    rdfs:label "Product Testing Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#registrationDate
+:registrationDate rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :date ;
+                  rdfs:domain :Vehicle ;
+                  rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#sequencialNumber
+:sequencialNumber rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :id ;
+                  rdfs:domain :VehicleIdentification ;
+                  rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#serialNr
+:serialNr rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :id ;
+          rdfs:domain :Material ;
+          rdfs:range xsd:string ;
+          rdfs:label "Serial Number"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#status
+:status rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#ticketNumber
+:ticketNumber rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :id ;
+              rdfs:domain :Issues ;
+              rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#toolID
+:toolID rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :id ;
+        rdfs:domain :ToolFixtureGage ;
+        rdfs:range xsd:string ;
+        rdfs:label "Tool ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#toolIndex
+:toolIndex rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :id ;
+           rdfs:domain :ToolFixtureGage ;
+           rdfs:range xsd:string ;
+           rdfs:label "Tool Index"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#vehicleId
+:vehicleId rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :id ;
+           rdfs:domain :Vehicle ;
+           rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#vehicleLocationDescription
+:vehicleLocationDescription rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :description ;
+                            rdfs:domain :MWI ;
+                            rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#workCenterName
+:workCenterName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :name ;
+                rdfs:domain :Assembly ;
+                rdfs:range xsd:string ;
+                rdfs:label "Work Center Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#yearCode
+:yearCode rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :date ;
+          rdfs:domain :VehicleIdentification ;
+          rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#yearOfModel
+:yearOfModel rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :date ;
+             rdfs:domain :Model ;
+             rdfs:range xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#analyticsName
+miele:analyticsName rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :dictionaryProp ;
+                   rdfs:domain miele:Analytic ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Analytics Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#columnContacts
+miele:columnContacts rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :dictionaryProp ;
+                    rdfs:domain miele:Column ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "Column Contacts"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#columnDescription
+miele:columnDescription rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :dictionaryProp ;
+                       rdfs:domain miele:Column ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "Column Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#columnName
+miele:columnName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :dictionaryProp ;
+                rdfs:domain miele:Column ;
+                rdfs:range xsd:string ;
+                rdfs:label "Column Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#columnPurpose
+miele:columnPurpose rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :dictionaryProp ;
+                   rdfs:domain miele:Column ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "Column Purpose"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#conditionOfUsage
+miele:conditionOfUsage rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :dictionaryProp ;
+                      rdfs:domain miele:Column ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "Condition of Usage"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#dataClassification
+miele:dataClassification rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :dictionaryProp ;
+                        rdfs:domain miele:Column ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "Data Classification"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#dataLifecycleInfo
+miele:dataLifecycleInfo rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :dictionaryProp ;
+                       rdfs:domain miele:Database ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "Data Lifecycle Info"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#dataOwner
+miele:dataOwner rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :dictionaryProp ;
+               rdfs:domain miele:Column ;
+               rdfs:range xsd:string ;
+               rdfs:label "Data Owner"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#dataProcessing
+miele:dataProcessing rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :dictionaryProp ;
+                    rdfs:domain miele:Database ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "Data Processing"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#dataType
+miele:dataType rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :dictionaryProp ;
+              rdfs:domain miele:Column ;
+              rdfs:range xsd:string ;
+              rdfs:label "Data Type"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#databaseDescription
+miele:databaseDescription rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :dictionaryProp ;
+                         rdfs:domain miele:Database ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "Database Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#databaseHost
+miele:databaseHost rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :dictionaryProp ;
+                  rdfs:domain miele:Database ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Database Host"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#databaseName
+miele:databaseName rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :dictionaryProp ;
+                  rdfs:domain miele:Database ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Database Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#databaseOrigin
+miele:databaseOrigin rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :dictionaryProp ;
+                    rdfs:domain miele:Database ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Origin of the Database"@en ;
+                    rdfs:label "Origin"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#ddId
+miele:ddId rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :dictionaryProp ;
+          rdfs:domain miele:Column ;
+          rdfs:range xsd:string ;
+          rdfs:label "Data dictionary ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#domainOfOrigin
+miele:domainOfOrigin rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :dictionaryProp ;
+                    rdfs:domain miele:Database ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "Domain of Origin"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#fieldAsKey
+miele:fieldAsKey rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :dictionaryProp ;
+                rdfs:domain miele:Database ;
+                rdfs:range xsd:string ;
+                rdfs:label "Field as Key"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#freeComment
+miele:freeComment rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :dictionaryProp ;
+                 rdfs:domain miele:Database ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Free Comment"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#ingestDateTime
+miele:ingestDateTime rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :dictionaryProp ;
+                    rdfs:domain miele:Database ;
+                    rdfs:range xsd:dateTime ;
+                    rdfs:label "Ingest Date Time"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#ingestionLayerRefreshInterval
+miele:ingestionLayerRefreshInterval rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :dictionaryProp ;
+                                   rdfs:domain miele:Database ;
+                                   rdfs:range xsd:string ;
+                                   rdfs:label "Ingestion Layer Refresh Interval"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#itDescription
+miele:itDescription rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :dictionaryProp ;
+                   rdfs:domain miele:Column ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "IT Description"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#legalEntityRestriction
+miele:legalEntityRestriction rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :dictionaryProp ;
+                            rdfs:domain miele:Column ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "Legal Entity Restriction"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#measurementMethod
+miele:measurementMethod rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :dictionaryProp ;
+                       rdfs:domain miele:Column ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "Measurement Method"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#outboundLayerRefreshInterval
+miele:outboundLayerRefreshInterval rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf :dictionaryProp ;
+                                  rdfs:domain miele:Database ;
+                                  rdfs:range xsd:string ;
+                                  rdfs:label "Outbound Layer Refresh Interval"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#personName
+miele:personName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :dictionaryProp ;
+                rdfs:domain miele:Person ;
+                rdfs:range xsd:string ;
+                rdfs:label "Contact Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#personalData
+miele:personalData rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :dictionaryProp ;
+                  rdfs:domain miele:Column ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Personal Data"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#populationStrategy
+miele:populationStrategy rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :dictionaryProp ;
+                        rdfs:domain miele:Database ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "Population Strategy"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#sourceSystem
+miele:sourceSystem rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :dictionaryProp ;
+                  rdfs:domain miele:Database ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Source System"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#statusOfOperation
+miele:statusOfOperation rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :dictionaryProp ;
+                       rdfs:domain miele:Database ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "Status of Operation"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#structuredType
+miele:structuredType rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :dictionaryProp ;
+                    rdfs:domain miele:Column ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "Structure Type"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#tableName
+miele:tableName rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :dictionaryProp ;
+               rdfs:domain miele:Column ;
+               rdfs:range xsd:string ;
+               rdfs:label "Table Name"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#targetSystem
+miele:targetSystem rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :dictionaryProp ;
+                  rdfs:domain miele:Database ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "Target System"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#timeframeWhenEntered
+miele:timeframeWhenEntered rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :dictionaryProp ;
+                          rdfs:domain miele:Column ;
+                          rdfs:range xsd:dateTime ;
+                          rdfs:label "Time Frame when Entered"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#validFromDate
+miele:validFromDate rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :dictionaryProp ;
+                   rdfs:domain miele:Database ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:label "Valid from Date"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#validToDate
+miele:validToDate rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :dictionaryProp ;
+                 rdfs:domain miele:Database ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:label "Valid to Date"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly
+:Assembly rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#AssemblyGroup
+:AssemblyGroup rdf:type owl:Class ;
+               :documentedAt doc:AssemblyGroup ;
+               miele:hasDictionarySource miele:KK-440 ,
+                                        miele:KK-450 ,
+                                        miele:KK-470 ,
+                                        miele:KK-480 ;
+               rdfs:comment "Group of materials used in a transmission to serve a functionality"@en ;
+               rdfs:label "Assembly Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_Line
+:Assembly_Line rdf:type owl:Class ;
+               :documentedAt doc:Assembly_Line ;
+               miele:hasDictionarySource miele:KK-190 ,
+                                        miele:KK-200 ,
+                                        miele:KK-230 ,
+                                        miele:KK-260 ,
+                                        miele:KK-270 ;
+               rdfs:comment "Group of work spaces to assemble components and products or reassemble defect products"@en ;
+               rdfs:label "Assembly Line"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#AutomatedWorkSpace
+:AutomatedWorkSpace rdf:type owl:Class ;
+                    rdfs:subClassOf :Workspace ;
+                    rdfs:label "Automated Work Space"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Country
+:Country rdf:type owl:Class ;
+         rdfs:subClassOf :Location .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Customer
+:Customer rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled
+:Disassembled rdf:type owl:Class ;
+              rdfs:subClassOf :AssemblyGroup .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Document
+:Document rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#EOL_Testing
+:EOL_Testing rdf:type owl:Class ;
+             rdfs:subClassOf :Assembly ;
+             rdfs:comment "Once the final product was assembled and flashed with a basic software, the final test occurs and releases the product for shippment or sends it back to re-assembly"@en ;
+             rdfs:label "EOL Testing"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Engine
+:Engine rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#External_Supplier
+:External_Supplier rdf:type owl:Class ;
+                   miele:hasDictionarySource miele:KK-300 ;
+                   rdfs:comment "Manufacuring source outside of ZF. Typically a part supplier"@en ;
+                   rdfs:label "External Supplier"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Failed
+:Failed rdf:type owl:Class ;
+        rdfs:subClassOf :ProductStatus .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Final_Assembly
+:Final_Assembly rdf:type owl:Class ;
+                rdfs:subClassOf :Assembly ;
+                :documentedAt doc:Final_Assembly ;
+                rdfs:comment "Finished assembly of all components and parts to a final product. This product is ready to be tested."@en ;
+                rdfs:label "Final Assembly"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Finished
+:Finished rdf:type owl:Class ;
+          rdfs:subClassOf :Part ;
+          miele:hasDictionarySource miele:KK-1000 ,
+                                   miele:KK-1040 ,
+                                   miele:KK-480 ,
+                                   miele:KK-570 ,
+                                   miele:KK-940 ;
+          rdfs:label "Finished Part" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Issues
+:Issues rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Location
+:Location rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#MWI
+:MWI rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Machine
+:Machine rdf:type owl:Class ;
+         :documentedAt doc:Machine ;
+         rdfs:comment "General superclass of part producing machines and assembly machines"@en ;
+         rdfs:label "Machine"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#MachineMaterial
+:MachineMaterial rdf:type owl:Class ;
+                 rdfs:subClassOf :Material ;
+                 rdfs:label "Machine Material"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Machine_Group
+:Machine_Group rdf:type owl:Class ;
+               rdfs:subClassOf :Manufacturing_Group ;
+               rdfs:comment "Identical machine types are combined in one machine group. Purpose: More capacity for one machine number but flexiblity for the production cost center in the utility."@en ;
+               rdfs:label "Machine Group"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Machining_Line
+:Machining_Line rdf:type owl:Class ;
+                rdfs:subClassOf :Manufacturing_Group ;
+                rdfs:comment "Group of different machining work center, arranged in a line to produce a part completely"@en ;
+                rdfs:label "Machining Line"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Manual_Work_Space
+:Manual_Work_Space rdf:type owl:Class ;
+                   rdfs:subClassOf :Workspace ;
+                   miele:hasDictionarySource miele:KK-210 ,
+                                            miele:KK-220 ,
+                                            miele:KK-240 ;
+                   rdfs:comment "Machine which works at an assembly line."@en ;
+                   rdfs:label "Manual Work Space"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Manufacture
+:Manufacture rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Manufacturing_Group
+:Manufacturing_Group rdf:type owl:Class ;
+                     rdfs:subClassOf :Manufacturing_Source .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Manufacturing_Source
+:Manufacturing_Source rdf:type owl:Class ;
+                      rdfs:comment "Internal Manufacturing Process Cluster."@en ;
+                      rdfs:label "Manufacturing Source"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Manufacturing_Unit_ID
+:Manufacturing_Unit_ID rdf:type owl:Class ;
+                       miele:hasDictionarySource miele:KK-100 ,
+                                                miele:KK-110 ,
+                                                miele:KK-120 ,
+                                                miele:KK-130 ,
+                                                miele:KK-140 ,
+                                                miele:KK-150 ,
+                                                miele:KK-160 ,
+                                                miele:KK-840 ,
+                                                miele:KK-850 ;
+                       rdfs:comment "Manufacturing Unit ID is a combination of: BOM/material number_Serial number_manufacturing source. Denotes the unique id of a product or transmission, assembly group or part."@en ;
+                       rdfs:label "Manufacturing Unit ID"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Material
+:Material rdf:type owl:Class ;
+          :documentedAt doc:Material ;
+          miele:hasDictionarySource miele:KK-1090 ,
+                                   miele:KK-1110 ,
+                                   miele:KK-580 ;
+          rdfs:comment "A tangible product that can be bought, produced, or sold"@en ;
+          rdfs:label "Material"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Model
+:Model rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Part
+:Part rdf:type owl:Class ;
+      rdfs:subClassOf :ProductMaterial ;
+      miele:hasDictionarySource miele:KK-110 ,
+                               miele:KK-160 ,
+                               miele:KK-500 ,
+                               miele:KK-530 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Plant
+:Plant rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Pre-assembly
+:Pre-assembly rdf:type owl:Class ;
+              rdfs:subClassOf :Assembly ;
+              miele:hasDictionarySource miele:KK-270 ,
+                                       miele:KK-280 ,
+                                       miele:KK-290 ;
+              rdfs:comment "Stations that assemble finshed parts to a group which will be used as a component for final assembly."@en ;
+              rdfs:label "Pre-assembly"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Product
+:Product rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#ProductMaterial
+:ProductMaterial rdf:type owl:Class ;
+                 rdfs:subClassOf :Material ;
+                 miele:hasDictionarySource miele:KK-1080 ,
+                                          miele:KK-1160 ,
+                                          miele:KK-470 ,
+                                          miele:KK-480 ;
+                 rdfs:label "Product Material"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#ProductStatus
+:ProductStatus rdf:type owl:Class ;
+               rdfs:label "Product Status"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Raw
+:Raw rdf:type owl:Class ;
+     rdfs:subClassOf :Part ;
+     rdfs:label "Raw Part" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Re-assembly
+:Re-assembly rdf:type owl:Class ;
+             rdfs:subClassOf :Assembly ;
+             rdfs:comment "If a finished assembled transmission is rejected on EOL, then a disassembly is required to change parts and retest it again"@en ;
+             rdfs:label "Re-assembly"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Ready
+:Ready rdf:type owl:Class ;
+       rdfs:subClassOf :ProductStatus ;
+       rdfs:label "Ready to Ship"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Region
+:Region rdf:type owl:Class ;
+        rdfs:subClassOf :Location .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Semi
+:Semi rdf:type owl:Class ;
+      rdfs:subClassOf :Part ;
+      miele:hasDictionarySource miele:KK-560 ;
+      rdfs:label "Semi-Finished Part" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#ToolFixtureGage
+:ToolFixtureGage rdf:type owl:Class ;
+                 rdfs:subClassOf :MachineMaterial ;
+                 :documentedAt doc:ToolFixtureGage ;
+                 miele:hasDictionarySource miele:KK-550 ,
+                                          miele:KK-610 ,
+                                          miele:KK-920 ,
+                                          miele:KK-930 ;
+                 rdfs:label "Tool Fixture Gage"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Transmission
+:Transmission rdf:type owl:Class ;
+              rdfs:subClassOf :Product ;
+              :documentedAt doc:Transmission ;
+              miele:hasDictionarySource miele:KK-110 ;
+              rdfs:comment "A transmission is a machine in a power transmission system, which provides controlled application of the power"@en ;
+              rdfs:label "Transmission"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#VIN
+:VIN rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Vehicle
+:Vehicle rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#VehicleDescription
+:VehicleDescription rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#VehicleIdentification
+:VehicleIdentification rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#WebDocument
+:WebDocument rdf:type owl:Class ;
+             rdfs:subClassOf :Document .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Work_Center
+:Work_Center rdf:type owl:Class ;
+             rdfs:subClassOf :Machine ;
+             miele:hasDictionarySource miele:KK-170 ,
+                                      miele:KK-180 ,
+                                      miele:KK-250 ,
+                                      miele:KK-280 ,
+                                      miele:KK-860 ,
+                                      miele:KK-960 ;
+             rdfs:comment "Machine which produces parts."@en ;
+             rdfs:label "Work Center"@en .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Workspace
+:Workspace rdf:type owl:Class ;
+           rdfs:subClassOf :Machine .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Analytic
+miele:Analytic rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Column
+miele:Column rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Database
+miele:Database rdf:type owl:Class .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Person
+miele:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://192.102.146.32:3000/widoco/#AssemblyGroup
+doc:AssemblyGroup rdf:type owl:NamedIndividual ,
+                           :WebDocument .
+
+
+###  http://192.102.146.32:3000/widoco/#Assembly_Line
+doc:Assembly_Line rdf:type owl:NamedIndividual ,
+                           :WebDocument .
+
+
+###  http://192.102.146.32:3000/widoco/#Final_Assembly
+doc:Final_Assembly rdf:type owl:NamedIndividual ,
+                            :WebDocument .
+
+
+###  http://192.102.146.32:3000/widoco/#Machine
+doc:Machine rdf:type owl:NamedIndividual ,
+                     :WebDocument .
+
+
+###  http://192.102.146.32:3000/widoco/#Material
+doc:Material rdf:type owl:NamedIndividual ,
+                      :WebDocument .
+
+
+###  http://192.102.146.32:3000/widoco/#ToolFixtureGage
+doc:ToolFixtureGage rdf:type owl:NamedIndividual ,
+                             :WebDocument .
+
+
+###  http://192.102.146.32:3000/widoco/#Transmission
+doc:Transmission rdf:type owl:NamedIndividual ,
+                          :WebDocument .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_1087128497_8493670_957986
+:Assembly_1087128497_8493670_957986 rdf:type owl:NamedIndividual ,
+                                             :Assembly ;
+                                    :partOfAssemblyLine :Assembly_Line_957986 ;
+                                    :producesProduct :Transmission_1087128497_8493670_957986 ;
+                                    :usesAssemblyGroup :Disassembled_1087327253_198184005_240990 ,
+                                                       :Disassembled_1087327257_306733004_240990 ,
+                                                       :Disassembled_6058008221_83200_341 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_1090128354_7283592_957991
+:Assembly_1090128354_7283592_957991 rdf:type owl:NamedIndividual ,
+                                             :Assembly ;
+                                    :partOfAssemblyLine :Assembly_Line_957991 ;
+                                    :producesProduct :Transmission_1090128354_7283592_957991 ;
+                                    :usesAssemblyGroup :Disassembled_1087150060_2036543_957990 ,
+                                                       :Disassembled_1087151029_2316639_957989 ,
+                                                       :Disassembled_6058008211_793610_18299 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_1102128452_4332661_957988
+:Assembly_1102128452_4332661_957988 rdf:type owl:NamedIndividual ,
+                                             :Assembly ;
+                                    :partOfAssemblyLine :Assembly_Line_957988 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_1102128453_4327088_957994
+:Assembly_1102128453_4327088_957994 rdf:type owl:NamedIndividual ,
+                                             :Assembly ;
+                                    :partOfAssemblyLine :Assembly_Line_957994 ;
+                                    :producesProduct :Transmission_1102128453_4327088_957994 ;
+                                    :usesAssemblyGroup :Disassembled_6058008223_69172_341 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_Line_957986
+:Assembly_Line_957986 rdf:type owl:NamedIndividual ,
+                               :Assembly_Line .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_Line_957988
+:Assembly_Line_957988 rdf:type owl:NamedIndividual ,
+                               :Assembly_Line .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_Line_957991
+:Assembly_Line_957991 rdf:type owl:NamedIndividual ,
+                               :Assembly_Line .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Assembly_Line_957994
+:Assembly_Line_957994 rdf:type owl:NamedIndividual ,
+                               :Assembly_Line .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_1087150060_2036543_957990
+:Disassembled_1087150060_2036543_957990 rdf:type owl:NamedIndividual ,
+                                                 :Disassembled ;
+                                        :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#1087150060_2036543_957990> ;
+                                        :materialName "VENTILGEHAEUSE"^^xsd:string ;
+                                        :materialNr "1087150060"^^xsd:string ;
+                                        :serialNr "2036543"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_1087151029_2316639_957989
+:Disassembled_1087151029_2316639_957989 rdf:type owl:NamedIndividual ,
+                                                 :Disassembled ;
+                                        :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#1087151029_2316639_957989> ;
+                                        :materialName "VENTILPLATTE"^^xsd:string ;
+                                        :materialNr "1087151029"^^xsd:string ;
+                                        :serialNr "2316639"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_1087327253_198184005_240990
+:Disassembled_1087327253_198184005_240990 rdf:type owl:NamedIndividual ,
+                                                   :Disassembled ;
+                                          :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#1087327253_198184005_240990> .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_1087327257_306733004_240990
+:Disassembled_1087327257_306733004_240990 rdf:type owl:NamedIndividual ,
+                                                   :Disassembled ;
+                                          :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#1087327257_306733004_240990> .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_6058008211_793610_18299
+:Disassembled_6058008211_793610_18299 rdf:type owl:NamedIndividual ,
+                                               :Disassembled ;
+                                      :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#6058008211_793610_18299> ;
+                                      :materialName "E-MODUL 8HP"^^xsd:string ;
+                                      :materialNr "6058008211"^^xsd:string ;
+                                      :serialNr "793610"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_6058008221_83200_341
+:Disassembled_6058008221_83200_341 rdf:type owl:NamedIndividual ,
+                                            :Disassembled ;
+                                   :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#6058008221_83200_341> .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Disassembled_6058008223_69172_341
+:Disassembled_6058008223_69172_341 rdf:type owl:NamedIndividual ,
+                                            :Disassembled ;
+                                   :hasManufacturingID <http://iais.fraunhofer.de/vocabs/miele#6058008223_69172_341> ;
+                                   :materialName "E-MODUL 8-GANG"^^xsd:string ;
+                                   :materialNr "6058008223"^^xsd:string ;
+                                   :serialNr "69172"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#External_5700110
+:External_5700110 rdf:type owl:NamedIndividual ,
+                           :External_Supplier ;
+                  :producesRawPart :Raw_1103337013 ;
+                  :producesSemi :Semi_468301 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Failed_1087128497_8493670_957986
+:Failed_1087128497_8493670_957986 rdf:type owl:NamedIndividual ,
+                                           :Failed ;
+                                  :materialName "E-MODUL 8-GANG"^^xsd:string ;
+                                  :materialNr "6058008221"^^xsd:string ;
+                                  :serialNr "83200"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Failed_1090128354_7283592_957991
+:Failed_1090128354_7283592_957991 rdf:type owl:NamedIndividual ,
+                                           :Failed .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Failed_1102128453_4327088_957994
+:Failed_1102128453_4327088_957994 rdf:type owl:NamedIndividual ,
+                                           :Failed .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Finished_1103337013
+:Finished_1103337013 rdf:type owl:NamedIndividual ,
+                              :Finished ;
+                     :partOfAssemblyGroup :Disassembled_6058008223_69172_341 ;
+                     :isDisassembledPart "True"^^xsd:string ;
+                     :materialNr "1087332095"^^xsd:string ;
+                     :partBuildStatus "Finished"^^xsd:string ;
+                     :partName "SONNENRAD"^^xsd:string ;
+                     :serialNr "281175#7"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Machine_634061
+:Machine_634061 rdf:type owl:NamedIndividual ,
+                         :Machine ;
+                :producesPart :Finished_1103337013 ;
+                :usesTool :Tool_5Z21.257.302 ;
+                :machineID "634061"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Raw_1103337013
+:Raw_1103337013 rdf:type owl:NamedIndividual ,
+                         :Raw ;
+                :partOfAssemblyGroup :Disassembled_6058008223_69172_341 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Semi_468301
+:Semi_468301 rdf:type owl:NamedIndividual ,
+                      :Semi ;
+             :partOfAssemblyGroup :Disassembled_6058008223_69172_341 .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Tool_5Z21.257.302
+:Tool_5Z21.257.302 rdf:type owl:NamedIndividual ,
+                            :ToolFixtureGage .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Transmission_1087128497_8493670_957986
+:Transmission_1087128497_8493670_957986 rdf:type owl:NamedIndividual ,
+                                                 :Transmission ;
+                                        :hasStatus :Failed_1087128497_8493670_957986 ;
+                                        :partOfAssemblyLine :Assembly_Line_957986 ;
+                                        :materialNr "1087128497"^^xsd:string ;
+                                        :productName "MECHATRONIC"^^xsd:string ;
+                                        :serialNr "8493670"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Transmission_1090128354_7283592_957991
+:Transmission_1090128354_7283592_957991 rdf:type owl:NamedIndividual ,
+                                                 :Transmission ;
+                                        :hasStatus :Failed_1090128354_7283592_957991 ;
+                                        :materialNr "1090128354"^^xsd:string ;
+                                        :productName "MECHATRONIC"^^xsd:string ;
+                                        :serialNr "7283592"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#Transmission_1102128453_4327088_957994
+:Transmission_1102128453_4327088_957994 rdf:type owl:NamedIndividual ,
+                                                 :Transmission ;
+                                        :hasStatus :Failed_1102128453_4327088_957994 ;
+                                        :materialNr "1102128453"^^xsd:string ;
+                                        :productName "MECHATRONIC"^^xsd:string ;
+                                        :serialNr "4327088"^^xsd:string .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#1087150060_2036543_957990
+<http://iais.fraunhofer.de/vocabs/miele#1087150060_2036543_957990> rdf:type owl:NamedIndividual ,
+                                                                         :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#1087151029_2316639_957989
+<http://iais.fraunhofer.de/vocabs/miele#1087151029_2316639_957989> rdf:type owl:NamedIndividual ,
+                                                                         :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#1087327253_198184005_240990
+<http://iais.fraunhofer.de/vocabs/miele#1087327253_198184005_240990> rdf:type owl:NamedIndividual ,
+                                                                           :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#1087327257_306733004_240990
+<http://iais.fraunhofer.de/vocabs/miele#1087327257_306733004_240990> rdf:type owl:NamedIndividual ,
+                                                                           :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#6058008211_793610_18299
+<http://iais.fraunhofer.de/vocabs/miele#6058008211_793610_18299> rdf:type owl:NamedIndividual ,
+                                                                       :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#6058008221_83200_341
+<http://iais.fraunhofer.de/vocabs/miele#6058008221_83200_341> rdf:type owl:NamedIndividual ,
+                                                                    :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele#6058008223_69172_341
+<http://iais.fraunhofer.de/vocabs/miele#6058008223_69172_341> rdf:type owl:NamedIndividual ,
+                                                                    :Manufacturing_Unit_ID .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Abdel
+miele:Abdel rdf:type owl:NamedIndividual ,
+                    miele:Person ;
+           miele:personName "Abdel" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Ahmed
+miele:Ahmed rdf:type owl:NamedIndividual ,
+                    miele:Person ;
+           miele:personName "Ahmed" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-100
+miele:KK-100 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "Test Unit" ;
+            miele:columnPurpose "Negatively tested transmission on EOL. (recognition)" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "1103337078_421897_10424102" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-100" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1000
+miele:KK-1000 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Material Number" ;
+             miele:columnName "LotName" ;
+             miele:columnPurpose "Obsolete field. Should not hold any meaning today" ;
+             miele:dataType "Integer" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+             miele:exampleValue "1102150052" ;
+             rdfs:label "KK-1000" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1010
+miele:KK-1010 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) --> consider time zone of db origin" ;
+             miele:columnName "RowUpdated" ;
+             miele:columnPurpose "Date and Time when row in table was last modified (technical field, not relevant for departments)" ;
+             miele:dataType "DateTime" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+             miele:exampleValue "2/14/2019 1:00" ;
+             rdfs:label "KK-1010" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1020
+miele:KK-1020 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnName "Lot_Linked_Level" ;
+             miele:columnPurpose "???" ;
+             miele:dataType "Integer" ;
+             miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+             miele:exampleValue "3" ;
+             rdfs:label "KK-1020" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1030
+miele:KK-1030 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Simatic IT Systemuser. SIT_Admin" ;
+             miele:columnName "CREATED_BY" ;
+             miele:columnPurpose "Technical / system user PK (not relevant of departments)" ;
+             miele:dataType "String" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "mmLotCo-Import" ;
+             rdfs:label "KK-1030" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1040
+miele:KK-1040 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Part name or description in text" ;
+             miele:columnName "DESCRIPTION" ;
+             miele:columnPurpose "Material name display" ;
+             miele:dataType "String" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "ANTRIEBSWELLE" ;
+             rdfs:label "KK-1040" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1050
+miele:KK-1050 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) --> consider time zone of db origin" ;
+             miele:columnName "DT_CREATED" ;
+             miele:columnPurpose "Zeitpunkt der Erzeugung des Datensatzes im MES System (technischer Zeitstempel). Wann habe ich zum ersten mal eine Nachricht bekommen die sich auf das Material bezieht. Wenn erste Maschine etwas schickt, dann wird Zeile angelegt" ;
+             miele:dataType "DateTime" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "2/14/2019 1:00" ;
+             rdfs:label "KK-1050" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1060
+miele:KK-1060 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Feld um DatensÃ¤tze anzeigen oder ausblenden zu lassen" ;
+             miele:columnName "HIDE_RECORD" ;
+             miele:columnPurpose "Some entries are redundent, wrong, not up to date anymore, etc. They should not be displayed" ;
+             miele:dataType "Boolean" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "False" ;
+             rdfs:label "KK-1060" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1070
+miele:KK-1070 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "ID zum Joinen fÃ¼r Reports" ;
+             miele:columnName "ID" ;
+             miele:columnPurpose "Fachlich irrelevant" ;
+             miele:dataType "Integer" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "281" ;
+             rdfs:label "KK-1070" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1080
+miele:KK-1080 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Check if material in dataset is a final product or a component" ;
+             miele:columnName "IS_FINAL_PRODUCT" ;
+             miele:columnPurpose "Likely that field was only populated once. Definition of final Product unknown (what about mechatronics which are sent to other plants)." ;
+             miele:dataType "Boolean" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "True" ;
+             rdfs:label "KK-1080" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1090
+miele:KK-1090 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Material number" ;
+             miele:columnName "NAME" ;
+             miele:columnPurpose "Material number display" ;
+             miele:dataType "Integer" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "11103034157" ;
+             rdfs:label "KK-1090" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-110
+miele:KK-110 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "Test Unit" ;
+            miele:columnPurpose "Negatively tested transmission on EOL. (ready to be disassembled at a re-assembly station). PrÃ¼fen ob schon disassembled!!!" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "1103337078_421897_10424102" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-110" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1100
+miele:KK-1100 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) --> consider time zone of db origin" ;
+             miele:columnName "TS_INSERT" ;
+             miele:columnPurpose "Zeitpunkt der Erzeugung des Datensatzes im MES System (technischer Zeitstempel). Wann habe ich zum ersten mal eine Nachricht bekommen die sich auf das Material bezieht. Wenn erste Maschine etwas schickt, dann wird Zeile angelegt" ;
+             miele:dataType "DateTime" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL" ;
+             miele:exampleValue "2/14/2019 1:00" ;
+             rdfs:label "KK-1100" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1110
+miele:KK-1110 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Part name or description in text" ;
+             miele:columnName "Bauteil Text" ;
+             miele:dataType "String" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "ANTRIEBSWELLE" ;
+             rdfs:label "KK-1110" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1120
+miele:KK-1120 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Simatic IT Systemuser. SIT_Admin" ;
+             miele:columnName "CREATED_BY" ;
+             miele:columnPurpose "Technical / system user  (not relevant of departments)" ;
+             miele:dataType "String" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "mmLotCo-Import" ;
+             rdfs:label "KK-1120" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1130
+miele:KK-1130 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) --> consider time zone of db origin" ;
+             miele:columnName "DT_CREATED" ;
+             miele:columnPurpose "Zeitpunkt der Erzeugung des Datensatzes im MES System (technischer Zeitstempel). Wann habe ich zum ersten mal eine Nachricht bekommen die sich auf das Material bezieht. Wenn erste Maschine etwas schickt, dann wird Zeile angelegt" ;
+             miele:dataType "DateTime" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "2/14/2019 1:00" ;
+             rdfs:label "KK-1130" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1140
+miele:KK-1140 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Feld um DatensÃ¤tze anzeigen oder ausblenden zu lassen" ;
+             miele:columnName "HIDE_RECORD" ;
+             miele:columnPurpose "Some entries are redundent, wrong, not up to date anymore, etc. They should not be displayed" ;
+             miele:dataType "Boolean" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "False" ;
+             rdfs:label "KK-1140" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1150
+miele:KK-1150 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "ID zum Joinen fÃ¼r Reports" ;
+             miele:columnName "ID" ;
+             miele:columnPurpose "Fachlich irrelevant" ;
+             miele:dataType "Integer" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "7879" ;
+             rdfs:label "KK-1150" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1160
+miele:KK-1160 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Check if material in dataset is a final product or a component" ;
+             miele:columnName "IS_FINAL_PRODUCT" ;
+             miele:columnPurpose "Likely that field was only populated once. Definition of final Product unknown (what about mechatronics which are sent to other plants)." ;
+             miele:dataType "Boolean" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "True" ;
+             rdfs:label "KK-1160" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1170
+miele:KK-1170 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Material number" ;
+             miele:columnName "NAME" ;
+             miele:dataType "Integer" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "11103034157" ;
+             rdfs:label "KK-1170" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1180
+miele:KK-1180 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) --> consider time zone of db origin" ;
+             miele:columnName "TS_INSERT" ;
+             miele:columnPurpose "Zeitpunkt der Erzeugung des Datensatzes im MES System (technischer Zeitstempel). Wann habe ich zum ersten mal eine Nachricht bekommen die sich auf das Material bezieht. Wenn erste Maschine etwas schickt, dann wird Zeile angelegt" ;
+             miele:dataType "DateTime" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_ZF_QS_REPORT_MATERIAL Level2" ;
+             miele:exampleValue "2/14/2019 1:00" ;
+             rdfs:label "KK-1180" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1190
+miele:KK-1190 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Type of operation which is performed" ;
+             miele:columnName "Operation Name" ;
+             miele:columnPurpose "Only a few of the types are being used.. ID and name filled by system vendor" ;
+             miele:dataType "Text" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+             miele:exampleValue "Transformed And Moved In" ;
+             rdfs:label "KK-1190" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-120
+miele:KK-120 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "Disassembled_Group_MAT_SN_SUPP" ;
+            miele:columnPurpose "Part or assembly group which is in an rejected transmission and is now beeing disassembled" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "1103337078_421897_10424102" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-120" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1200
+miele:KK-1200 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Abbreviation and data set ID of the material status" ;
+             miele:columnName "OpeTypeID" ;
+             miele:columnPurpose "Readable abreviation of the type name. ID and name filled by system vendor" ;
+             miele:dataType "Text" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+             miele:exampleValue "TMoveIn" ;
+             rdfs:label "KK-1200" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1210
+miele:KK-1210 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Field has not been used before" ;
+             miele:columnName "OpeTypeOptions" ;
+             miele:columnPurpose "Irrelevant for department" ;
+             miele:dataType "Boolean" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+             miele:exampleValue "1" ;
+             rdfs:label "KK-1210" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1220
+miele:KK-1220 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "All type values are set false. They are not changed" ;
+             miele:columnName "RowDeleted" ;
+             miele:columnPurpose "Irrelevant for department" ;
+             miele:dataType "Boolean" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+             miele:exampleValue "False" ;
+             rdfs:label "KK-1220" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1230
+miele:KK-1230 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Unique Row ID of the table" ;
+             miele:columnName "RowGuid" ;
+             miele:columnPurpose "Created by Simatic IT (might be an alternative to PK)" ;
+             miele:dataType "String" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+             miele:exampleValue "9555C52A-E178-4891-8C15-E9815F5C31CE" ;
+             rdfs:label "KK-1230" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1240
+miele:KK-1240 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:contactPerson miele:Abdel ;
+             miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+             miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) --> consider time zone of db origin" ;
+             miele:columnName "RowUpdated" ;
+             miele:columnPurpose "Date and Time when row in table was last modified (technical field, not relevant for departments)" ;
+             miele:dataType "DateTime" ;
+             miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+             miele:exampleValue "2/14/2019 1:00" ;
+             rdfs:label "KK-1240" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1250
+miele:KK-1250 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Buchungskreis" ;
+             miele:columnName "BUKRS" ;
+             miele:dataType "String" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "DE01" ;
+             rdfs:label "KK-1250" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1260
+miele:KK-1260 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Kundennummer in ZQS04 Tabelle = KUNUM aus QMEL Tabelle" ;
+             miele:columnName "ZQSKKDNR" ;
+             miele:dataType "Number" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "0010016800" ;
+             rdfs:label "KK-1260" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1270
+miele:KK-1270 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Fahrgestellnummer" ;
+             miele:columnName "ZQSFGSNR" ;
+             miele:dataType "String" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "LX12975" ;
+             rdfs:label "KK-1270" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1280
+miele:KK-1280 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "ZF Modellbezeichnung des OEM Fzg." ;
+             miele:columnName "ZQSFZTYP" ;
+             miele:dataType "String" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "ZXD" ;
+             rdfs:label "KK-1280" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1290
+miele:KK-1290 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Engine name from OEM" ;
+             miele:columnName "ZQSMOTOR" ;
+             miele:dataType "String" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "XU10" ;
+             rdfs:label "KK-1290" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-130
+miele:KK-130 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Kevin Thomas, Andreas Placzek, Stefan Rupp" ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "LotID" ;
+            miele:columnPurpose "Part or assembly group produced in SBR. Eigentlich vom Bauteil bis Getriebe" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "1103337078_421897_10424102" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            miele:keyword "BOM Number, Serial number, manufacturing source, supplier, machine, work center" ;
+            rdfs:label "KK-130" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1300
+miele:KK-1300 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Erstzulassungsdatum des Fahrzeugs" ;
+             miele:columnName "ZQSEZDAT" ;
+             miele:dataType "Date" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "Freitag, 1. Januar 2016" ;
+             rdfs:label "KK-1300" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1310
+miele:KK-1310 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Baudatum des Fahrzeugs beim OEM" ;
+             miele:columnName "ZQSBDATU" ;
+             miele:dataType "Date" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "Dienstag, 6. Juli 2019" ;
+             rdfs:label "KK-1310" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1320
+miele:KK-1320 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "SchlÃ¼ssel fÃ¼r Modellcode" ;
+             miele:columnName "ZQSFZKEY" ;
+             miele:columnPurpose "SchlÃ¼ssel fÃ¼hrt auf weitere Tabelle um OEM Daten zu knÃ¼pfen" ;
+             miele:dataType "String" ;
+             miele:tableName "ZQS04" ;
+             miele:exampleValue "CR63" ;
+             rdfs:label "KK-1320" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1330
+miele:KK-1330 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Kundennummer ID" ;
+             miele:columnName "KUNUM" ;
+             miele:dataType "Number" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "0010016800" ;
+             rdfs:label "KK-1330" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1340
+miele:KK-1340 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Material number transmission" ;
+             miele:columnName "MATNR" ;
+             miele:dataType "Number" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "000000001111026063" ;
+             rdfs:label "KK-1340" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1350
+miele:KK-1350 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Plant which is responsible for were quality issue came up" ;
+             miele:columnName "MAWERK" ;
+             miele:dataType "Number" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "0002" ;
+             rdfs:label "KK-1350" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1360
+miele:KK-1360 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Meldungsart" ;
+             miele:columnName "QMART" ;
+             miele:dataType "Text" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "EM" ;
+             rdfs:label "KK-1360" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1370
+miele:KK-1370 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "ZF internal SAP ticket issue number (quality issue number)" ;
+             miele:columnName "QMNUM" ;
+             miele:dataType "Number" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "00800392156" ;
+             rdfs:label "KK-1370" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1380
+miele:KK-1380 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Serial number of effected BOM (quality report related)" ;
+             miele:columnName "SERIALNR" ;
+             miele:dataType "Number" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "000000000000001415" ;
+             rdfs:label "KK-1380" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-1390
+miele:KK-1390 rdf:type owl:NamedIndividual ,
+                      miele:Column ;
+             miele:usedInAnalytics miele:Matching_Datenlager_QMEL ;
+             miele:columnDescription "Fahrgestellnummer" ;
+             miele:columnName "ZZQSFGSNR" ;
+             miele:dataType "String" ;
+             miele:tableName "QMEL" ;
+             miele:exampleValue "LK88448" ;
+             rdfs:label "KK-1390" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-140
+miele:KK-140 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Kevin Thomas, Andreas Placzek, Stefan Rupp" ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "LotID" ;
+            miele:columnPurpose "Part or assembly group. (copy of KK-130 for a specific use case)" ,
+                               "Part or assembly group. (copy of KK-130 for a specific use case)." ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "1103337078_421897_10424102" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            miele:keyword "BOM Number, Serial number, manufacturing source, supplier, machine, work center" ;
+            rdfs:label "KK-140" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-150
+miele:KK-150 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "Joint_Mat_SN_Supp" ;
+            miele:columnPurpose "Part produced in SBR" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "1103337078_421897_10424102" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-150" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-160
+miele:KK-160 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "BOM/material number_Serial number_manufacturing source" ;
+            miele:columnName "AssemblyGroup" ,
+                            "DMC_String" ;
+            miele:columnPurpose "Fertigteil (Bauteil) Materialnummer_Serialnummer des Suppliers_ (Kredior / ext. Lieferant) Nummer. Part produced in SBR. Kombined to display DMC ID. . Werte des Strings nicht auffindbar in SAP oder Axalant" ,
+                               "Part or assembly group which is in an rejected transmission" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ,
+                           "qaims tvf_ZFLR" ;
+            miele:exampleValue "1103337078_421897_10424103" ,
+                              "1103337078_421897_969923" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-160" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-161
+miele:KK-161 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:columnName "Manufacturing source" ;
+            rdfs:label "KK-161" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-170
+miele:KK-170 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "Machine number" ;
+            miele:columnName "Virtual_Supplier" ;
+            miele:columnPurpose "Scan of First machine in production. One of two machines" ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "112233" ;
+            miele:hasSemantics :Work_Center ;
+            rdfs:label "KK-170" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-180
+miele:KK-180 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "machine number" ;
+            miele:columnName "Machine_Nr" ;
+            miele:columnPurpose "Gear machines." ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "112233" ;
+            miele:hasSemantics :Work_Center ;
+            rdfs:label "KK-180" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-190
+miele:KK-190 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "assembly line displayed as work center number in SAP" ;
+            miele:columnName "Montageline" ;
+            miele:columnPurpose "Assembly line number displayed and managed with an SAP work center number.. This is the final assembly line on which rejected transmission was assembled" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "969923" ;
+            miele:hasSemantics :Assembly_Line ;
+            rdfs:label "KK-190" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-200
+miele:KK-200 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "assembly line displayed as line number based on SBR numbering system" ;
+            miele:columnName "Montageline" ;
+            miele:columnPurpose "Assembly line number displayed and managed with an SAP work center number.. This is the pre-assembly line on which disassembled assembly group (from rejected transmission) was originally assembled" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "3" ,
+                              3 ;
+            miele:hasSemantics :Assembly_Line ;
+            rdfs:label "KK-200" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-210
+miele:KK-210 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "work center number 6-8 numbers" ;
+            miele:columnName "WorkstationNr" ;
+            miele:columnPurpose "Re-assembly work center in SAP" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "112233" ;
+            rdfs:label "KK-210" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-220
+miele:KK-220 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Re-assembly location in text" ;
+            miele:columnName "Workstation" ;
+            miele:columnPurpose "in this particular field: \"Rueckmontage\" or \"KRM\"" ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "RÃ¼ckmontage" ;
+            rdfs:label "KK-220" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-230
+miele:KK-230 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Work center in assembly line" ;
+            miele:columnName "Test_Unit_Supplier" ;
+            miele:columnPurpose "Work center in assembly line on which error occured" ;
+            miele:dataType "Integer" ;
+            miele:tableName "Bridge_Test_Unit" ;
+            miele:exampleValue "112233" ;
+            miele:hasSemantics :Assembly_Line ;
+            rdfs:label "KK-230" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-240
+miele:KK-240 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Work center within an assembly group  assembly line (e.g. STN4)" ;
+            miele:columnName "AssemblyGroup_Workstation" ;
+            miele:columnPurpose "Work center within an assembly group  assembly line (e.g. STN4)" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "HAP5.1" ;
+            rdfs:label "KK-240" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-250
+miele:KK-250 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "Machine number" ;
+            miele:columnName "Bauteil_ersteMaschine" ;
+            miele:columnPurpose "First machine on which gear was manufactured" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "112233" ,
+                              112233 ;
+            miele:hasSemantics :Work_Center ;
+            rdfs:label "KK-250" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-260
+miele:KK-260 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "final assembly line name and (number)" ;
+            miele:columnName "Test_Unit_Supplier_Description" ;
+            miele:columnPurpose "Final Assembly line and number as string" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "8HP Endmontage Standard (4)" ;
+            miele:hasSemantics :Assembly_Line ;
+            rdfs:label "KK-260" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-270
+miele:KK-270 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnDescription "Pre-assenbly line name and (number)" ;
+            miele:columnName "Test_Unit_Supplier_Description" ;
+            miele:columnPurpose "Pre-Assembly line and number as string" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "8HP Mechatronik (3)" ;
+            miele:hasSemantics :Assembly_Line ;
+            rdfs:label "KK-270" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-280
+miele:KK-280 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Work Center number and name of pre-assembly line" ;
+            miele:columnName "AssemblyGroup_Supplier_Description" ;
+            miele:columnPurpose "Worc center number and work center name" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "634043 LEISHON" ;
+            rdfs:label "KK-280" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-290
+miele:KK-290 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Pre-assenbly line name and (number)" ;
+            miele:columnName "DisassembledGroup_Supplier_Description" ;
+            miele:columnPurpose "Manufacturing source (here: preassembly line) which created the assembly group that was dissassembled after internal reject" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "8HP Mechatronik (2)" ;
+            rdfs:label "KK-290" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-300
+miele:KK-300 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Supplier number from external supplier" ;
+            miele:columnName "DMC_Supplier" ;
+            miele:columnPurpose "External supplier number of the semi-finished part" ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "5700104" ;
+            rdfs:label "KK-300" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-310
+miele:KK-310 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            rdfs:label "KK-310" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-320
+miele:KK-320 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:columnName "Time stamps" ;
+            rdfs:label "KK-320" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-330
+miele:KK-330 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "AssemblyGroup_AssemblyDate" ;
+            miele:columnPurpose "Date and time of final assembly of the assembly group" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "3/20/2019 11:23" ;
+            rdfs:label "KK-330" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-340
+miele:KK-340 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "AssemblyGroup_CreationDate" ;
+            miele:columnPurpose "Date and time of finshed assembly group on assembly group line (Gear sets)" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "3/20/2019 11:23" ;
+            rdfs:label "KK-340" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-350
+miele:KK-350 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "DatumZeit Ausbau" ;
+            miele:columnPurpose "Date and time of disassembled assembly group in re-assembly station" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "3/20/2019 11:23" ;
+            rdfs:label "KK-350" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-360
+miele:KK-360 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "Test_Unit_CreationDate" ;
+            miele:columnPurpose "Date and time of final assembly of the entire transmission" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "3/21/2019 11:23" ;
+            rdfs:label "KK-360" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-370
+miele:KK-370 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "Test_Unit_Testdate" ;
+            miele:columnPurpose "Date and time of final test on EOL for the transmission" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "3/22/2019 11:23" ;
+            rdfs:label "KK-370" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-380
+miele:KK-380 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "Test_Unit_CreationDate" ;
+            miele:columnPurpose "Date and time of final assembly of the entire transmission" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "3/20/2019 11:23" ;
+            rdfs:label "KK-380" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-390
+miele:KK-390 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM" ;
+            miele:columnName "TimeStamp" ;
+            miele:columnPurpose "Date and time of machined part" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "3/21/2019 11:23" ;
+            rdfs:label "KK-390" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-400
+miele:KK-400 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Kevin Thomas, Andreas Placzek, Stefan Rupp" ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ,
+                                   "Date and time in format: DD.MM.YYYY HH:MM. UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "CreatedOn" ;
+            miele:columnPurpose "Fachlicher Zeitstempel (Geburtszeitpunkt eines Materials, Bearbeitungsbeginn, Konsumierung von ext. Teilen (Mitanlage) Create und Verbauzeitpunkt zur selben Zeit." ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "2019-03-22  11:23:00 AM" ,
+                              "3/22/2019 11:23" ;
+            miele:hasSemantics :Manufacturing_Time_Stamp ;
+            rdfs:label "KK-400" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-410
+miele:KK-410 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Kevin Thomas, Andreas Placzek, Stefan Rupp" ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ,
+                                   "Date and time in format: DD.MM.YYYY HH:MM. UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "LastUpdate" ;
+            miele:columnPurpose "Date and Time when row in table was last modified (technical field, not relevant for departments) (sooner then Row updated)" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "2019-03-23  11:23:00 AM" ,
+                              "3/23/2019 11:23" ;
+            miele:hasSemantics :Manufacturing_Time_Stamp ;
+            rdfs:label "KK-410" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-420
+miele:KK-420 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Kevin Thomas, Andreas Placzek, Stefan Rupp" ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ,
+                                   "Date and time in format: DD.MM.YYYY HH:MM. UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "RowUpdated" ;
+            miele:columnPurpose "Date and Time when row in table was last modified (technical field, not relevant for departments)" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "2019-03-23  11:23:00 AM" ,
+                              "3/23/2019 11:23" ;
+            miele:hasSemantics :Manufacturing_Time_Stamp ;
+            rdfs:label "KK-420" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-430
+miele:KK-430 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:columnName "Material" ;
+            rdfs:label "KK-430" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-440
+miele:KK-440 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "material number" ;
+            miele:columnName "Baugruppe Material" ;
+            miele:columnPurpose "Material number of the assembly group which was dissassembled. (eg. Mechatronic)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "1102128452" ;
+            rdfs:label "KK-440" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-450
+miele:KK-450 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "name of component" ;
+            miele:columnName "Baugruppen Text" ;
+            miele:columnPurpose "Description of the assembly group which was disassembled at the re-assembly" ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "Converter" ;
+            rdfs:label "KK-450" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-460
+miele:KK-460 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "material number" ;
+            miele:columnName "Getriebe HSL" ;
+            miele:columnPurpose "Transmission number which caused an internal reject on EOL" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "1111024038" ;
+            rdfs:label "KK-460" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-470
+miele:KK-470 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "material number" ;
+            miele:columnName "Getriebe HSL" ;
+            miele:columnPurpose "Diasassambled mechatronic which belonged to the negativly tested transmission" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "1102128452" ;
+            rdfs:label "KK-470" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-480
+miele:KK-480 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "material number" ;
+            miele:columnName "Bauteil_MaterialNr" ;
+            miele:columnPurpose "Material number of part in \"not ok transmission\"" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "1103337297" ;
+            rdfs:label "KK-480" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-490
+miele:KK-490 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Bauteil_Serial" ;
+            miele:columnPurpose "Serial number of the SBOM" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "78089" ;
+            rdfs:label "KK-490" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-500
+miele:KK-500 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Bauteil_Text" ;
+            miele:columnPurpose "Part which was disassembled within an assembly group at a re-assembly station" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "Input shaft" ;
+            rdfs:label "KK-500" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-510
+miele:KK-510 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Test_Unit_Material_Description" ;
+            miele:columnPurpose "Transmission description / Product name" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "8HP51X" ;
+            rdfs:label "KK-510" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-520
+miele:KK-520 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Baugruppe Serial" ;
+            miele:columnPurpose "Serial number of the disassembled assembly group" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "4340581" ;
+            rdfs:label "KK-520" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-521
+miele:KK-521 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Test_Unit_Material_Description" ;
+            miele:columnPurpose "Transmission or specific assembly group which was rejected from EOL" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "Mechatronic" ;
+            rdfs:label "KK-521" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-530
+miele:KK-530 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "ZF material number. Abstract identifier (in SBR short DMC) Mat.Nr. on Identifier. Es gibt ein Rohteil dazu und ein Fertigteil dazu. ID zeigt auf n-Teile" ;
+            miele:columnName "DMC_Material" ;
+            miele:columnPurpose "Material number belongs to a finished part. Part number of a DMC tracked part. . Identifier zeigt auf Fertigteil und Ã¼ber Zuordnung zur Charge bekomme ich die betroffenen weiteren Teile heraus." ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "1103337378" ;
+            rdfs:label "KK-530" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-540
+miele:KK-540 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Serial number from external supplier" ;
+            miele:columnName "DMC_Serial" ;
+            miele:columnPurpose "Serial number of the semi-finished part from the external supplier" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "247402" ;
+            rdfs:label "KK-540" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-550
+miele:KK-550 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Tool material number" ;
+            miele:columnName "Tool_AANumber" ;
+            miele:columnPurpose "Not found in Axalant" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "AA1269250" ;
+            rdfs:label "KK-550" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-560
+miele:KK-560 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Material number" ;
+            miele:columnName "Virtual_Material" ;
+            miele:columnPurpose "Semi finished part material number" ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "1103480005" ;
+            rdfs:label "KK-560" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-570
+miele:KK-570 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Serial number of finished part (in ZF)" ;
+            miele:columnName "Virtual_Serial" ;
+            miele:columnPurpose "Serial number of the finished part" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "472531" ;
+            rdfs:label "KK-570" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-580
+miele:KK-580 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Material Number" ;
+            miele:columnName "LotName" ;
+            miele:columnPurpose "part or assembly group" ,
+                               "part or assembly group " ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "1102231052" ,
+                              1102231052 ;
+            miele:hasSemantics :Material ;
+            rdfs:label "KK-580" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-590
+miele:KK-590 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Getriebe FZ" ;
+            miele:columnPurpose "Transmission serial number" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Assembly_Transmission" ;
+            miele:exampleValue "4915059" ;
+            rdfs:label "KK-590" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-600
+miele:KK-600 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnName "Getriebe FZ" ;
+            miele:columnPurpose "Transmission serial number" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf Final_test_rejects_Diasassembled_Parts" ;
+            miele:exampleValue "4915059" ;
+            rdfs:label "KK-600" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-610
+miele:KK-610 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            rdfs:label "KK-610" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-620
+miele:KK-620 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:columnName "Analytics related Keys" ;
+            rdfs:label "KK-620" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-630
+miele:KK-630 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "LotPK" ;
+            miele:columnPurpose "Primary Key to link qaims_raw tvf_ZFReport_dbo_MMLots (LotPK) with qaims_raw tvf_ZFReport_dbo_MMLotOperations (LotPK)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "836376906" ;
+            rdfs:label "KK-630" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-640
+miele:KK-640 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "LotPK" ;
+            miele:columnPurpose "Primary Key to link qaims_raw tvf_ZFReport_dbo_MMLotOperations with qaims_raw (TargetLotPK) with tvf_ZFReport_dbo_MMLots_Level2 (LotPK)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "837293978" ;
+            rdfs:label "KK-640" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-650
+miele:KK-650 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "LotPK" ;
+            miele:columnPurpose "Primary Key to link qaims_raw tvf_ZFReport_dbo_MMLots (LotPK) with qaims_raw tvf_ZFReport_dbo_MMLotOperations (LotPK)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "836376906" ;
+            rdfs:label "KK-650" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-660
+miele:KK-660 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Unique Row ID of the table" ;
+            miele:columnName "RowGuid" ;
+            miele:columnPurpose "Created by Simatic IT (might be an alternative to PK)" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "9555C52A-E178-4891-8C15-E9815F5C31CE" ;
+            rdfs:label "KK-660" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-670
+miele:KK-670 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Unique Row ID of the table" ;
+            miele:columnName "RowGuid" ;
+            miele:columnPurpose "Created by Simatic IT (might be an alternative to PK)" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "9555C52A-E178-4891-8C15-E9815F5C31CE" ;
+            rdfs:label "KK-670" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-680
+miele:KK-680 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Unique Row ID of the table" ;
+            miele:columnName "RowGuid" ;
+            miele:columnPurpose "Created by Simatic IT (might be an alternative to PK)" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "9555C52A-E178-4891-8C15-E9815F5C31CE" ;
+            rdfs:label "KK-680" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-690
+miele:KK-690 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "SourceLotPK" ;
+            miele:columnPurpose "Parts are used in Assembly group" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "835334483" ;
+            rdfs:label "KK-690" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-700
+miele:KK-700 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "TargetLotPK" ;
+            miele:columnPurpose "Parts are used in Transmission" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "835568223" ;
+            rdfs:label "KK-700" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-710
+miele:KK-710 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "SourceLotPK" ;
+            miele:columnPurpose "Parts are used in Assembly group" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "837449229" ;
+            rdfs:label "KK-710" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-720
+miele:KK-720 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "TargetLotPK" ;
+            miele:columnPurpose "Parts are used in Transmission" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "837532953" ;
+            rdfs:label "KK-720" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-730
+miele:KK-730 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "SourceLotPK" ;
+            miele:columnPurpose "Parts are used in Assembly group" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "836376907" ;
+            rdfs:label "KK-730" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-740
+miele:KK-740 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "TargetLotPK" ;
+            miele:columnPurpose "Primary Key to link qaims_raw tvf_ZFReport_dbo_MMLotOperations  (TragetLotPK) with qaims_raw tvf_ZFReport_dbo_MMLots_Level2 (LotPK). Parts of MMLots_Level 2 are assembled in Parts from MMLotOperations" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "836376908" ;
+            rdfs:label "KK-740" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-750
+miele:KK-750 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "LotOpeTypePK" ;
+            miele:columnPurpose "Code for material operation which is pferomed at a specific moment from qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "15" ;
+            rdfs:label "KK-750" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-760
+miele:KK-760 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of material to access more information" ;
+            miele:columnName "LotOpeTypePK" ;
+            miele:columnPurpose "Code for material operation which is pferomed at a specific moment from qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOpeTypes" ;
+            miele:exampleValue "18" ;
+            rdfs:label "KK-760" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-770
+miele:KK-770 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:columnName "User Info" ;
+            rdfs:label "KK-770" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-780
+miele:KK-780 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Simatic IT Systemuser. SIT_Admin" ;
+            miele:columnName "CreatedBy" ;
+            miele:columnPurpose "Technical / system user PK (not relevant of departments)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "2" ;
+            rdfs:label "KK-780" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-790
+miele:KK-790 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Simatic IT Systemuser. SIT_Admin" ;
+            miele:columnName "LastUser" ;
+            miele:columnPurpose "Technical / system user PK (not relevant of departments)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots" ;
+            miele:exampleValue "3" ;
+            rdfs:label "KK-790" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-800
+miele:KK-800 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key of system user activitiy" ;
+            miele:columnName "UserPK" ;
+            miele:columnPurpose "Technical / system user PK (not relevant of departments)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "2" ;
+            rdfs:label "KK-800" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-810
+miele:KK-810 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            rdfs:label "KK-810" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-820
+miele:KK-820 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Primary Key which is reused from time to time." ;
+            miele:columnName "LotOperationPK" ;
+            miele:columnPurpose "Do not use for reports (always use ID column in the same table)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "1501959844" ;
+            rdfs:label "KK-820" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-830
+miele:KK-830 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "Operation Date" ;
+            miele:columnPurpose "Aktionszeitstempel zu einer bestimmten Operation. Fachlicher Zeitstempel, z.B. Stempel der an der Maschine  (die mit der Aktion verknÃ¼pft ist). Beginn oder Ende vom Vorsystem Ã¼bergeben, aber nicht definiert. " ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "2/14/2019 1:00" ;
+            rdfs:label "KK-830" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-840
+miele:KK-840 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "currently not used" ;
+            miele:columnName "OldName" ;
+            miele:columnPurpose "currently not used" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "1101301212_929680_19577" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-840" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-850
+miele:KK-850 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "currently not used" ;
+            miele:columnName "NewName" ;
+            miele:columnPurpose "currently not used" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "1101301212_929680_19577" ;
+            miele:hasSemantics :Manufacturing_Unit_ID ;
+            rdfs:label "KK-850" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-860
+miele:KK-860 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Location andem eine Operation durchgefÃ¼hrt wurde" ,
+                                   "Location andem eine Operation durchgeführt wurde" ;
+            miele:columnName "AssociateTo" ;
+            miele:columnPurpose "Mehrstufiges Arbeitsplatzfeld welches immer dann einen Zeitstempel setzt, wenn eine Aktion an einem Arbeitsplatz oder Linie durchgefÃ¼hrt wird" ,
+                               "Mehrstufiges Arbeitsplatzfeld welches immer dann einen Zeitstempel setzt, wenn eine Aktion an einem Arbeitsplatz oder Linie durchgeführt wird" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "String" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "HAP1" ;
+            miele:hasSemantics :Work_Center ;
+            rdfs:label "KK-860" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-870
+miele:KK-870 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ,
+                                   "Date and time in format: DD.MM.YYYY HH:MM. UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "RowUpdated" ;
+            miele:columnPurpose "Date and Time when row in table was last modified (technical field, not relevant for departments)" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "2/14/2019 1:00" ,
+                              "2019-02-14  1:00:01 AM" ;
+            miele:hasSemantics :Assembly_Time_Stamp ;
+            rdfs:label "KK-870" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-880
+miele:KK-880 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "ID zum Joinen fÃ¼r Reports" ,
+                                   "ID zum Joinen für Reports" ;
+            miele:columnName "ID" ;
+            miele:columnPurpose "Fachlich irrelevant" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLotOperations" ;
+            miele:exampleValue "2786187108" ,
+                              2786187108 ;
+            miele:hasSemantics :ID ;
+            rdfs:label "KK-880" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-890
+miele:KK-890 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Step within routing" ;
+            miele:columnName "AVONumber" ;
+            miele:columnPurpose "Position in the routing on which the machine was used that prouced a disassembled part from an internal reject transmission" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "120" ;
+            rdfs:label "KK-890" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-900
+miele:KK-900 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Part of a Station" ;
+            miele:columnName "Spindle" ;
+            miele:columnPurpose "???" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "1" ;
+            rdfs:label "KK-900" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-910
+miele:KK-910 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "AVO state (e.g. in progress)" ;
+            miele:columnName "State" ;
+            miele:columnPurpose "???" ;
+            miele:dataType "DescimalNumber" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "900" ;
+            rdfs:label "KK-910" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-920
+miele:KK-920 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Serial number of tool of a spindle" ;
+            miele:columnName "Tool_Index" ;
+            miele:columnPurpose "???" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "1208" ;
+            rdfs:label "KK-920" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-930
+miele:KK-930 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ,
+                               miele:Ahmed ,
+                               miele:Farhad ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Number of tool supplier" ;
+            miele:columnName "Tool_Supplier" ;
+            miele:columnPurpose "Tool manufacturar / supplier" ;
+            miele:dataType "Text" ;
+            miele:tableName "qaims tvf_ZFLR" ;
+            miele:exampleValue "14078" ;
+            rdfs:label "KK-930" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-940
+miele:KK-940 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Material number" ;
+            miele:columnName "Bauteil MaterialNr" ;
+            miele:columnPurpose "Finished Part" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:hasSemantics :Finished_Part ;
+            rdfs:label "KK-940" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-950
+miele:KK-950 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Serial number" ;
+            miele:columnName "Bauteil SerialNr" ;
+            miele:columnPurpose "Serial Number of single part" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "399769" ,
+                              399769 ;
+            miele:hasSemantics :Serial_Number ;
+            rdfs:label "KK-950" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-960
+miele:KK-960 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "work center number" ;
+            miele:columnName "Bauteil_ersteMaschine" ;
+            miele:columnPurpose "First machine which scanns part" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "240990" ,
+                              240990 ;
+            miele:hasSemantics :Work_Center ;
+            rdfs:label "KK-960" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-970
+miele:KK-970 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ,
+                                   "Date and time in format: DD.MM.YYYY HH:MM. UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "CreatedOn" ;
+            miele:columnPurpose "Fachlicher Zeitstempel (Geburtszeitpunkt eines Materials, Bearbeitungsbeginn, Konsumierung von ext. Teilen (Mitanlage) Create und Verbauzeitpunkt zur selben Zeit." ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "2/14/2019 1:00" ,
+                              "2019-02-14  1:00:01 AM" ;
+            miele:hasSemantics :Assembly_Time_Stamp ;
+            rdfs:label "KK-970" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-980
+miele:KK-980 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ,
+                                 miele:internalRejectsTraceabilityGears ;
+            miele:columnContacts "Andreas Placzek" ;
+            miele:columnDescription "Date and time in format: DD.MM.YYYY HH:MM. . UTC time zone (not local time) -- .onsider time zone of db origin" ,
+                                   "Date and time in format: DD.MM.YYYY HH:MM. UTC time zone (not local time) -- .onsider time zone of db origin" ;
+            miele:columnName "LastUpdate" ;
+            miele:columnPurpose "Date and Time when row in table was last modified (technical field, not relevant for departments) (sooner then Row updated)" ;
+            miele:dataOwner "PTPP" ;
+            miele:dataType "DateTime" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "2/14/2019 1:00" ,
+                              "2019-02-14  1:00:01 AM" ;
+            miele:hasSemantics :Assembly_Time_Stamp ;
+            rdfs:label "KK-980" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#KK-990
+miele:KK-990 rdf:type owl:NamedIndividual ,
+                     miele:Column ;
+            miele:contactPerson miele:Abdel ;
+            miele:usedInAnalytics miele:Internal_Rejects_Traceability_Gears ;
+            miele:columnDescription "Simatic IT Systemuser. SIT_Admin" ;
+            miele:columnName "LastUser" ;
+            miele:columnPurpose "Technical / system user PK (not relevant of departments)" ;
+            miele:dataType "Integer" ;
+            miele:tableName "qaims_raw tvf_ZFReport_dbo_MMLots_Level2" ;
+            miele:exampleValue "2" ;
+            rdfs:label "KK-990" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Farhad
+miele:Farhad rdf:type owl:NamedIndividual ,
+                     miele:Person ;
+            miele:personName "Farhad" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Internal_Rejects_Traceability_Gears
+miele:Internal_Rejects_Traceability_Gears rdf:type owl:NamedIndividual ,
+                                                  miele:Analytic ;
+                                         miele:analyticsName "Internal_Rejects_Traceability_Gears" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#Matching_Datenlager_QMEL
+miele:Matching_Datenlager_QMEL rdf:type owl:NamedIndividual ,
+                                       miele:Analytic ;
+                              miele:analyticsName "Matching_Datenlager_QMEL" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#datenlager
+miele:datenlager rdf:type owl:NamedIndividual ,
+                         miele:Database ;
+                miele:databaseDescription "Contains data warehouse logs from vehicles." ;
+                miele:databaseName "Datenlager" ;
+                miele:databaseOrigin "SBR" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#internalRejectsTraceabilityGears
+miele:internalRejectsTraceabilityGears rdf:type owl:NamedIndividual ,
+                                               miele:Analytic ;
+                                      miele:analyticsName "Internal_Rejects_Traceability_Gears" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#sap
+miele:sap rdf:type owl:NamedIndividual ,
+                  miele:Database ;
+         miele:hasColumn miele:KK-1250 ,
+                        miele:KK-1260 ,
+                        miele:KK-1270 ,
+                        miele:KK-1280 ,
+                        miele:KK-1290 ,
+                        miele:KK-1300 ,
+                        miele:KK-1310 ,
+                        miele:KK-1320 ,
+                        miele:KK-1330 ,
+                        miele:KK-1340 ,
+                        miele:KK-1350 ,
+                        miele:KK-1360 ,
+                        miele:KK-1370 ,
+                        miele:KK-1380 ,
+                        miele:KK-1390 ;
+         miele:databaseDescription "Contains customer comaplaints logged in SAP regarding vehicles and transmissions." ;
+         miele:databaseName "SAP" ;
+         miele:databaseOrigin "SBR" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#tatoo
+miele:tatoo rdf:type owl:NamedIndividual ,
+                    miele:Database ;
+           miele:hasColumn miele:KK-100 ,
+                          miele:KK-110 ,
+                          miele:KK-120 ,
+                          miele:KK-200 ,
+                          miele:KK-250 ,
+                          miele:KK-260 ,
+                          miele:KK-270 ;
+           miele:databaseDescription "Contains End of Line testing data of final products and control unit" ;
+           miele:databaseName "Tatoo" ;
+           miele:databaseOrigin "SBR" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#zflr
+miele:zflr rdf:type owl:NamedIndividual ,
+                   miele:Database ;
+          miele:hasColumn miele:KK-150 ,
+                         miele:KK-160 ,
+                         miele:KK-170 ,
+                         miele:KK-180 ;
+          miele:databaseDescription "Contains machining data in regards to parts" ;
+          miele:databaseName "ZFLR" ;
+          miele:databaseOrigin "SBR" .
+
+
+###  http://iais.fraunhofer.de/vocabs/miele/dataDictionary#zfreport
+miele:zfreport rdf:type owl:NamedIndividual ,
+                       miele:Database ;
+              miele:hasColumn miele:KK-130 ,
+                             miele:KK-140 ,
+                             miele:KK-400 ,
+                             miele:KK-410 ,
+                             miele:KK-420 ,
+                             miele:KK-580 ,
+                             miele:KK-840 ,
+                             miele:KK-850 ,
+                             miele:KK-860 ,
+                             miele:KK-870 ,
+                             miele:KK-880 ,
+                             miele:KK-940 ,
+                             miele:KK-950 ,
+                             miele:KK-960 ,
+                             miele:KK-970 ,
+                             miele:KK-980 ;
+              miele:databaseDescription "Contains assembly data of assembly groups and final products" ;
+              miele:databaseName "ZFReport" ;
+              miele:databaseOrigin "SBR" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
