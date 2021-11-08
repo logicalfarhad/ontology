@@ -1,0 +1,37 @@
+@base <http://example.com/ns#>.
+@prefix edm: <http://www.europeana.eu/schemas/edm/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix wlo: <http://purl.org/ontology/wo/>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix bbcprov: <http://www.bbc.co.uk/ontologies/provenance/>.
+@prefix biopax: <http://www.biopax.org/release/>.
+@prefix npg: <http://ns.nature.com/terms/>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+
+
+<#PersonMapping> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/{publishDate}";
+		rr:class skos:ConceptScheme
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate wlo:name;
+		rr:objectMap [rml:reference "name"]];
+	rr:predicateObjectMap [
+		rr:predicate edm:country;
+		rr:objectMap [rml:reference "country"]];
+	rr:predicateObjectMap [
+		rr:predicate bbcprov:public;
+		rr:objectMap [rml:reference "publisher"]];
+	rr:predicateObjectMap [
+		rr:predicate biopax:id;
+		rr:objectMap [rml:reference "Id"]];
+	rr:predicateObjectMap [
+		rr:predicate foaf:sha1;
+		rr:objectMap [rml:reference "mbox_sha1sum"]].
