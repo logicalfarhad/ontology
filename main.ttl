@@ -1,37 +1,171 @@
 @base <http://example.com/ns#>.
-@prefix edm: <http://www.europeana.eu/schemas/edm/>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dbug: <http://ontologi.es/>.
+@prefix uniprot: <http://purl.uniprot.org/core/>.
 @prefix wlo: <http://purl.org/ontology/wo/>.
-@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
-@prefix bbcprov: <http://www.bbc.co.uk/ontologies/provenance/>.
-@prefix biopax: <http://www.biopax.org/release/>.
+@prefix ctorg: <http://purl.org/ctic/infraestructuras/>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix igeo: <http://rdf.insee.fr/def/>.
+@prefix lgdo: <http://linkedgeodata.org/ontology/>.
+@prefix spcm: <http://spi-fm.uca.es/spdef/models/deployment/spcm/>.
+@prefix dicom: <http://purl.org/healthcarevocab/>.
+@prefix lswpm: <http://ontology.cybershare.utep.edu/ELSEWeb/>.
 @prefix npg: <http://ns.nature.com/terms/>.
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
+@prefix ore: <http://www.openarchives.org/ore/terms/>.
+@prefix ntag: <http://ns.inria.fr/nicetag/2010/09/09/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix atm: <https://data.nasa.gov/ontologies/atmonto/>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix identity: <http://www.identity.org/ontologies/>.
+@prefix doap: <http://usefulinc.com/ns/>.
+@prefix qb: <http://purl.org/linked-data/>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix keys: <http://purl.org/NET/c4dm/>.
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/>.
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 
 
-<#PersonMapping> a rr:TriplesMap;
+<#Mapping1> a rr:TriplesMap;
 	rml:logicalSource [
 		rml:source "/home/sali/Person.csv";
 		rml:referenceFormulation ql:CSV
 	];
 	rr:subjectMap [
-		rr:template "http://example.com/{publishDate}";
-		rr:class skos:ConceptScheme
+		rr:template "http://example.com/{mbox_sha1sum}";
+		rr:class identity:UID
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate atm:reRoutePath;
+		rr:objectMap [rml:reference "country"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate ore:proxyIn;
+		rr:objectMap [rml:reference "name"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate ore:aggregates;
+		rr:objectMap [rml:reference "Id"]
+	].
+
+
+<#Mapping2> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/{publisher}";
+		rr:class lswpm:Nu
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate spcm:skills;
+		rr:objectMap [rml:reference "name"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate bibo:oclcnum;
+		rr:objectMap [rml:reference "publishDate"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate bf:count;
+		rr:objectMap [rml:reference "country"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate dcterms:contributor;
+		rr:objectMap [rml:reference "mbox_sha1sum"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate npg:id;
+		rr:objectMap [rml:reference "Id"]
+	].
+
+
+<#Mapping3> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/{mbox_sha1sum}";
+		rr:class bibo:Manuscript
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate wlo:name;
-		rr:objectMap [rml:reference "name"]];
+		rr:objectMap [rml:reference "name"]
+	];
+
 	rr:predicateObjectMap [
-		rr:predicate edm:country;
-		rr:objectMap [rml:reference "country"]];
+		rr:predicate dicom:UID;
+		rr:objectMap [rml:reference "Id"]
+	];
+
 	rr:predicateObjectMap [
-		rr:predicate bbcprov:public;
-		rr:objectMap [rml:reference "publisher"]];
+		rr:predicate dbpedia-owl:animal;
+		rr:objectMap [rml:reference "country"]
+	].
+
+
+<#Mapping4> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/{country}";
+		rr:class lgdo:Moor
+	];
+
 	rr:predicateObjectMap [
-		rr:predicate biopax:id;
-		rr:objectMap [rml:reference "Id"]];
+		rr:predicate keys:tonic;
+		rr:objectMap [rml:reference "publisher"]
+	];
+
 	rr:predicateObjectMap [
-		rr:predicate foaf:sha1;
-		rr:objectMap [rml:reference "mbox_sha1sum"]].
+		rr:predicate uniprot:sequence;
+		rr:objectMap [rml:reference "publishDate"]
+	].
+
+
+<#Mapping5> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/{name}";
+		rr:class dbug:Bug
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate doap:wiki;
+		rr:objectMap [rml:reference "mbox_sha1sum"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate ntag:makesMeFeel;
+		rr:objectMap [rml:reference "country"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate ctorg:bus;
+		rr:objectMap [rml:reference "publisher"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate dbpedia-owl:amateurKo;
+		rr:objectMap [rml:reference "publishDate"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate qb:structure;
+		rr:objectMap [rml:reference "Id"]
+	].

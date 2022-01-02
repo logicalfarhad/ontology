@@ -1,36 +1,152 @@
-<http://example.com/2008-09-05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
-<http://example.com/2008-09-05> <http://xmlns.com/foaf/0.1/sha1> "'fb3efd92e3c7a8d775a895ba476e11a3e8f3fac'".
-<http://example.com/2008-09-05> <http://purl.org/ontology/wo/name> "'Ruggiero-Delane'".
-<http://example.com/2008-09-05> <http://www.europeana.eu/schemas/edm/country> "'US'".
-<http://example.com/2008-09-05> <http://www.bbc.co.uk/ontologies/provenance/public> "1".
-<http://example.com/2008-09-05> <http://www.biopax.org/release/id> "1".
-<http://example.com/2008-08-07> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
-<http://example.com/2008-08-07> <http://xmlns.com/foaf/0.1/sha1> "'df1cf8e68d49e5b65f1507dbecec6b61e9dc98'".
-<http://example.com/2008-08-07> <http://purl.org/ontology/wo/name> "'Eyana-Aurelianus'".
-<http://example.com/2008-08-07> <http://www.europeana.eu/schemas/edm/country> "'JP'".
-<http://example.com/2008-08-07> <http://www.bbc.co.uk/ontologies/provenance/public> "1".
-<http://example.com/2008-08-07> <http://www.biopax.org/release/id> "2".
-<http://example.com/2008-07-21> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
-<http://example.com/2008-07-21> <http://xmlns.com/foaf/0.1/sha1> "'9b9d4b8dcf7ada3c181b4bed1fa3c53d29caf65'".
-<http://example.com/2008-07-21> <http://purl.org/ontology/wo/name> "'Danijela-Adalbrand'".
-<http://example.com/2008-07-21> <http://www.europeana.eu/schemas/edm/country> "'US'".
-<http://example.com/2008-07-21> <http://www.bbc.co.uk/ontologies/provenance/public> "1".
-<http://example.com/2008-07-21> <http://www.biopax.org/release/id> "3".
-<http://example.com/2008-06-23> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
-<http://example.com/2008-06-23> <http://xmlns.com/foaf/0.1/sha1> "'619b2f69a01a7d86c0eca3f5e910c5b559ff3a'".
-<http://example.com/2008-06-23> <http://purl.org/ontology/wo/name> "'Allegra-Walburga'".
-<http://example.com/2008-06-23> <http://www.europeana.eu/schemas/edm/country> "'RU'".
-<http://example.com/2008-06-23> <http://www.bbc.co.uk/ontologies/provenance/public> "1".
-<http://example.com/2008-06-23> <http://www.biopax.org/release/id> "4".
-<http://example.com/2008-08-19> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
-<http://example.com/2008-08-19> <http://xmlns.com/foaf/0.1/sha1> "'c3b1c82511908f706153319688a7a5599b8ad8c0'".
-<http://example.com/2008-08-19> <http://purl.org/ontology/wo/name> "'Przemek-Berte'".
-<http://example.com/2008-08-19> <http://www.europeana.eu/schemas/edm/country> "'ES'".
-<http://example.com/2008-08-19> <http://www.bbc.co.uk/ontologies/provenance/public> "1".
-<http://example.com/2008-08-19> <http://www.biopax.org/release/id> "5".
-<http://example.com/2008-06-29> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
-<http://example.com/2008-06-29> <http://xmlns.com/foaf/0.1/sha1> "'d6deee088e99af0f7c65fb7cca9bdfbbe3d7343'".
-<http://example.com/2008-06-29> <http://purl.org/ontology/wo/name> "'Caryn'".
-<http://example.com/2008-06-29> <http://www.europeana.eu/schemas/edm/country> "'CN'".
-<http://example.com/2008-06-29> <http://www.bbc.co.uk/ontologies/provenance/public> "1".
-<http://example.com/2008-06-29> <http://www.biopax.org/release/id> "6".
+@prefix atm: <https://data.nasa.gov/ontologies/atmonto/> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix ctorg: <http://purl.org/ctic/infraestructuras/> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+@prefix dbug: <http://ontologi.es/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dicom: <http://purl.org/healthcarevocab/> .
+@prefix doap: <http://usefulinc.com/ns/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix identity: <http://www.identity.org/ontologies/> .
+@prefix igeo: <http://rdf.insee.fr/def/> .
+@prefix keys: <http://purl.org/NET/c4dm/> .
+@prefix lgdo: <http://linkedgeodata.org/ontology/> .
+@prefix lswpm: <http://ontology.cybershare.utep.edu/ELSEWeb/> .
+@prefix npg: <http://ns.nature.com/terms/> .
+@prefix ntag: <http://ns.inria.fr/nicetag/2010/09/09/> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix qb: <http://purl.org/linked-data/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix spcm: <http://spi-fm.uca.es/spdef/models/deployment/spcm/> .
+@prefix uniprot: <http://purl.uniprot.org/core/> .
+@prefix wlo: <http://purl.org/ontology/wo/> .
+
+<http://example.com/%27619b2f69a01a7d86c0eca3f5e910c5b559ff3a%27> a bibo:Manuscript,
+    identity:UID;
+  dbpedia-owl:animal "'RU'";
+  dicom:UID "4";
+  wlo:name "'Allegra-Walburga'";
+  ore:aggregates "4";
+  ore:proxyIn "'Allegra-Walburga'";
+  atm:reRoutePath "'RU'" .
+
+<http://example.com/%279b9d4b8dcf7ada3c181b4bed1fa3c53d29caf65%27> a bibo:Manuscript,
+    identity:UID;
+  dbpedia-owl:animal "'US'";
+  dicom:UID "3";
+  wlo:name "'Danijela-Adalbrand'";
+  ore:aggregates "3";
+  ore:proxyIn "'Danijela-Adalbrand'";
+  atm:reRoutePath "'US'" .
+
+<http://example.com/%27Allegra-Walburga%27> a dbug:Bug;
+  dbpedia-owl:amateurKo "2008-06-23";
+  ntag:makesMeFeel "'RU'";
+  ctorg:bus "1";
+  qb:structure "4";
+  doap:wiki "'619b2f69a01a7d86c0eca3f5e910c5b559ff3a'" .
+
+<http://example.com/%27CN%27> a lgdo:Moor;
+  keys:tonic "1";
+  uniprot:sequence "2008-06-29" .
+
+<http://example.com/%27Caryn%27> a dbug:Bug;
+  dbpedia-owl:amateurKo "2008-06-29";
+  ntag:makesMeFeel "'CN'";
+  ctorg:bus "1";
+  qb:structure "6";
+  doap:wiki "'d6deee088e99af0f7c65fb7cca9bdfbbe3d7343'" .
+
+<http://example.com/%27Danijela-Adalbrand%27> a dbug:Bug;
+  dbpedia-owl:amateurKo "2008-07-21";
+  ntag:makesMeFeel "'US'";
+  ctorg:bus "1";
+  qb:structure "3";
+  doap:wiki "'9b9d4b8dcf7ada3c181b4bed1fa3c53d29caf65'" .
+
+<http://example.com/%27ES%27> a lgdo:Moor;
+  keys:tonic "1";
+  uniprot:sequence "2008-08-19" .
+
+<http://example.com/%27Eyana-Aurelianus%27> a dbug:Bug;
+  dbpedia-owl:amateurKo "2008-08-07";
+  ntag:makesMeFeel "'JP'";
+  ctorg:bus "1";
+  qb:structure "2";
+  doap:wiki "'df1cf8e68d49e5b65f1507dbecec6b61e9dc98'" .
+
+<http://example.com/%27JP%27> a lgdo:Moor;
+  keys:tonic "1";
+  uniprot:sequence "2008-08-07" .
+
+<http://example.com/%27Przemek-Berte%27> a dbug:Bug;
+  dbpedia-owl:amateurKo "2008-08-19";
+  ntag:makesMeFeel "'ES'";
+  ctorg:bus "1";
+  qb:structure "5";
+  doap:wiki "'c3b1c82511908f706153319688a7a5599b8ad8c0'" .
+
+<http://example.com/%27RU%27> a lgdo:Moor;
+  keys:tonic "1";
+  uniprot:sequence "2008-06-23" .
+
+<http://example.com/%27Ruggiero-Delane%27> a dbug:Bug;
+  dbpedia-owl:amateurKo "2008-09-05";
+  ntag:makesMeFeel "'US'";
+  ctorg:bus "1";
+  qb:structure "1";
+  doap:wiki "'fb3efd92e3c7a8d775a895ba476e11a3e8f3fac'" .
+
+<http://example.com/%27US%27> a lgdo:Moor;
+  keys:tonic "1";
+  uniprot:sequence "2008-07-21", "2008-09-05" .
+
+<http://example.com/%27c3b1c82511908f706153319688a7a5599b8ad8c0%27> a bibo:Manuscript,
+    identity:UID;
+  dbpedia-owl:animal "'ES'";
+  dicom:UID "5";
+  wlo:name "'Przemek-Berte'";
+  ore:aggregates "5";
+  ore:proxyIn "'Przemek-Berte'";
+  atm:reRoutePath "'ES'" .
+
+<http://example.com/%27d6deee088e99af0f7c65fb7cca9bdfbbe3d7343%27> a bibo:Manuscript,
+    identity:UID;
+  dbpedia-owl:animal "'CN'";
+  dicom:UID "6";
+  wlo:name "'Caryn'";
+  ore:aggregates "6";
+  ore:proxyIn "'Caryn'";
+  atm:reRoutePath "'CN'" .
+
+<http://example.com/%27df1cf8e68d49e5b65f1507dbecec6b61e9dc98%27> a bibo:Manuscript,
+    identity:UID;
+  dbpedia-owl:animal "'JP'";
+  dicom:UID "2";
+  wlo:name "'Eyana-Aurelianus'";
+  ore:aggregates "2";
+  ore:proxyIn "'Eyana-Aurelianus'";
+  atm:reRoutePath "'JP'" .
+
+<http://example.com/%27fb3efd92e3c7a8d775a895ba476e11a3e8f3fac%27> a bibo:Manuscript,
+    identity:UID;
+  dbpedia-owl:animal "'US'";
+  dicom:UID "1";
+  wlo:name "'Ruggiero-Delane'";
+  ore:aggregates "1";
+  ore:proxyIn "'Ruggiero-Delane'";
+  atm:reRoutePath "'US'" .
+
+<http://example.com/1> a lswpm:Nu;
+  bf:count "'CN'", "'ES'", "'JP'", "'RU'", "'US'";
+  npg:id "1", "2", "3", "4", "5", "6";
+  dcterms:contributor "'619b2f69a01a7d86c0eca3f5e910c5b559ff3a'", "'9b9d4b8dcf7ada3c181b4bed1fa3c53d29caf65'",
+    "'c3b1c82511908f706153319688a7a5599b8ad8c0'", "'d6deee088e99af0f7c65fb7cca9bdfbbe3d7343'",
+    "'df1cf8e68d49e5b65f1507dbecec6b61e9dc98'", "'fb3efd92e3c7a8d775a895ba476e11a3e8f3fac'";
+  bibo:oclcnum "2008-06-23", "2008-06-29", "2008-07-21", "2008-08-07", "2008-08-19",
+    "2008-09-05";
+  spcm:skills "'Allegra-Walburga'", "'Caryn'", "'Danijela-Adalbrand'", "'Eyana-Aurelianus'",
+    "'Przemek-Berte'", "'Ruggiero-Delane'" .
