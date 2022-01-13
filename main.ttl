@@ -1,0 +1,76 @@
+@base <http://example.com/ns#>.
+@prefix atm: <https://data.nasa.gov/ontologies/atmonto/>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix igeo: <http://rdf.insee.fr/def/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix identity: <http://www.identity.org/ontologies/>.
+@prefix spcm: <http://spi-fm.uca.es/spdef/models/deployment/spcm/>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix lswpm: <http://ontology.cybershare.utep.edu/ELSEWeb/>.
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/>.
+@prefix npg: <http://ns.nature.com/terms/>.
+@prefix ore: <http://www.openarchives.org/ore/terms/>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+
+
+<#Mapping1> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/undefined";
+		rr:class identity:UID
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate atm:reRoutePath;
+		rr:objectMap [rml:reference "country"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate ore:proxyIn;
+		rr:objectMap [rml:reference "name"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate ore:aggregates;
+		rr:objectMap [rml:reference "Id"]
+	].
+
+
+<#Mapping2> a rr:TriplesMap;
+	rml:logicalSource [
+		rml:source "/home/sali/Person.csv";
+		rml:referenceFormulation ql:CSV
+	];
+	rr:subjectMap [
+		rr:template "http://example.com/undefined";
+		rr:class lswpm:Nu
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate spcm:skills;
+		rr:objectMap [rml:reference "name"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate bibo:oclcnum;
+		rr:objectMap [rml:reference "publishDate"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate bf:count;
+		rr:objectMap [rml:reference "country"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate dcterms:contributor;
+		rr:objectMap [rml:reference "mbox_sha1sum"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate npg:id;
+		rr:objectMap [rml:reference "Id"]
+	].
