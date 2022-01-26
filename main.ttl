@@ -1,16 +1,16 @@
+@prefix mrel: <http://id.loc.gov/vocabulary/relators/>.
+@prefix scoro: <http://purl.org/spar/scoro/>.
 @base <http://example.com/ns#>.
-@prefix atm: <https://data.nasa.gov/ontologies/atmonto/>.
+@prefix event: <http://purl.org/NET/c4dm/>.
+@prefix place: <http://purl.org/ontology/>.
+@prefix wlo: <http://purl.org/ontology/wo/>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix bibo: <http://purl.org/ontology/bibo/>.
-@prefix igeo: <http://rdf.insee.fr/def/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix identity: <http://www.identity.org/ontologies/>.
-@prefix spcm: <http://spi-fm.uca.es/spdef/models/deployment/spcm/>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix vcard: <http://www.w3.org/2006/vcard/>.
 @prefix lswpm: <http://ontology.cybershare.utep.edu/ELSEWeb/>.
-@prefix bf: <http://id.loc.gov/ontologies/bibframe/>.
-@prefix npg: <http://ns.nature.com/terms/>.
-@prefix ore: <http://www.openarchives.org/ore/terms/>.
+@prefix bevon: <http://rdfs.co/bevon/>.
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 
 
@@ -20,23 +20,23 @@
 		rml:referenceFormulation ql:CSV
 	];
 	rr:subjectMap [
-		rr:template "http://example.com/undefined";
-		rr:class identity:UID
+		rr:template "http://example.com/{email}";
+		rr:class lswpm:Nu
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate atm:reRoutePath;
-		rr:objectMap [rml:reference "country"]
+		rr:predicate event:place;
+		rr:objectMap [rml:reference "place"]
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate ore:proxyIn;
+		rr:predicate bevon:color;
+		rr:objectMap [rml:reference "color"]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate dcterms:isPartOf;
 		rr:objectMap [rml:reference "name"]
-	];
-
-	rr:predicateObjectMap [
-		rr:predicate ore:aggregates;
-		rr:objectMap [rml:reference "Id"]
 	].
 
 
@@ -46,31 +46,21 @@
 		rml:referenceFormulation ql:CSV
 	];
 	rr:subjectMap [
-		rr:template "http://example.com/undefined";
-		rr:class lswpm:Nu
+		rr:template "http://example.com/{place}";
+		rr:class place:Desert
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate spcm:skills;
+		rr:predicate wlo:name;
 		rr:objectMap [rml:reference "name"]
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate bibo:oclcnum;
-		rr:objectMap [rml:reference "publishDate"]
+		rr:predicate mrel:aui;
+		rr:objectMap [rml:reference "email"]
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate bf:count;
-		rr:objectMap [rml:reference "country"]
-	];
-
-	rr:predicateObjectMap [
-		rr:predicate dcterms:contributor;
-		rr:objectMap [rml:reference "mbox_sha1sum"]
-	];
-
-	rr:predicateObjectMap [
-		rr:predicate npg:id;
-		rr:objectMap [rml:reference "Id"]
+		rr:predicate scoro:withJobTitle;
+		rr:objectMap [rml:reference "color"]
 	].
