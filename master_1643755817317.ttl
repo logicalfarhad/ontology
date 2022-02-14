@@ -1,0 +1,58 @@
+@prefix event: <http://purl.org/NET/c4dm/> .
+@prefix gn: <http://www.geonames.org/> .
+@prefix lgdo: <http://linkedgeodata.org/ontology/> .
+@prefix npg: <http://ns.nature.com/terms/> .
+@prefix oum: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix ov: <http://open.vocab.org/terms/> .
+@prefix pubsub: <https://vocab.eccenca.com/pubsub/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/> .
+
+<http://example.com/%2353f4c1> a lgdo:fuel;
+  npg:name "Keiko Beasley";
+  event:place "Bauchi";
+  vcard:email "integer.tincidunt@google.net" .
+
+<http://example.com/%23b4d345> a lgdo:fuel;
+  npg:name "Jack Gonzalez";
+  event:place "Hatay";
+  vcard:email "magna.malesuada.vel@protonmail.ca" .
+
+<http://example.com/%23b5c635> a lgdo:fuel;
+  npg:name "Abigail Stevens";
+  event:place "Kujawsko-pomorskie";
+  vcard:email "quam.a.felis@google.ca" .
+
+<http://example.com/%23b71f1d> a lgdo:fuel;
+  npg:name "Erin Riggs";
+  event:place "Alajuela";
+  vcard:email "magna.et.ipsum@google.net" .
+
+<http://example.com/%23bf4c13> a lgdo:fuel;
+  npg:name "Hannah Carlson";
+  event:place "Alabama";
+  vcard:email "fringilla.euismod@aol.edu" .
+
+<http://example.com/Alabama> a oum:DensityUnit;
+  ov:csvCol "#bf4c13";
+  gn:locationMap "Hannah Carlson";
+  pubsub:hub "fringilla.euismod@aol.edu" .
+
+<http://example.com/Alajuela> a oum:DensityUnit;
+  ov:csvCol "#b71f1d";
+  gn:locationMap "Erin Riggs";
+  pubsub:hub "magna.et.ipsum@google.net" .
+
+<http://example.com/Bauchi> a oum:DensityUnit;
+  ov:csvCol "#53f4c1";
+  gn:locationMap "Keiko Beasley";
+  pubsub:hub "integer.tincidunt@google.net" .
+
+<http://example.com/Hatay> a oum:DensityUnit;
+  ov:csvCol "#b4d345";
+  gn:locationMap "Jack Gonzalez";
+  pubsub:hub "magna.malesuada.vel@protonmail.ca" .
+
+<http://example.com/Kujawsko-pomorskie> a oum:DensityUnit;
+  ov:csvCol "#b5c635";
+  gn:locationMap "Abigail Stevens";
+  pubsub:hub "quam.a.felis@google.ca" .
